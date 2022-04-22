@@ -10,13 +10,14 @@ public class Cliente {
 	private String correo;
 	private int telefono;
 	private String direccion;
+	private int codigo_postal;
 	List<Coche> misCoches;
 	
 	public Cliente() {
 		
 	}
 
-	public Cliente(int id, String dni, String nombre, String apellidos, String correo, int telefono, String direccion,
+	public Cliente(int id, String dni, String nombre, String apellidos, String correo, int telefono, String direccion, int codigo_postal,
 			List<Coche> misCoches) {
 		this.id = id;
 		this.dni = dni;
@@ -25,10 +26,11 @@ public class Cliente {
 		this.correo = correo;
 		this.telefono = telefono;
 		this.direccion = direccion;
+		this.codigo_postal = codigo_postal;
 		this.misCoches = misCoches;
 	}
 
-	public Cliente(int id, String dni, String nombre, String apellidos, String correo, int telefono, String direccion) {
+	public Cliente(int id, String dni, String nombre, String apellidos, String correo, int telefono, String direccion, int codigo_postal) {
 		this.id = id;
 		this.dni = dni;
 		this.nombre = nombre;
@@ -36,6 +38,7 @@ public class Cliente {
 		this.correo = correo;
 		this.telefono = telefono;
 		this.direccion = direccion;
+		this.codigo_postal = codigo_postal;
 	}
 
 	public int getId() {
@@ -101,5 +104,15 @@ public class Cliente {
 	public void setMisCoches(List<Coche> misCoches) {
 		this.misCoches = misCoches;
 	}
+
+	public int getCodigo_postal() {
+		return codigo_postal;
+	}
+
+	public void setCodigo_postal(int codigo_postal) {
+		this.codigo_postal = codigo_postal;
+	}
+	
+	
 	
 }
