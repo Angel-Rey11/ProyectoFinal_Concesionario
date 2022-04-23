@@ -8,7 +8,7 @@ public class Coche {
 	private String modelo;
 	private int ano;
 	private String color;
-	private Double kms;
+	private Double kilometros;
 	private double precio;
 	List<Cliente> misClientes;
 	
@@ -16,25 +16,25 @@ public class Coche {
 		
 	}
 
-	public Coche(String matricula, String marca, String modelo, int ano, String color, Double kms, double precio,
+	public Coche(String matricula, String marca, String modelo, int ano, String color, Double kilometros, double precio,
 			List<Cliente> misClientes) {
 		this.matricula = matricula;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
 		this.color = color;
-		this.kms = kms;
+		this.kilometros = kilometros;
 		this.precio = precio;
 		this.misClientes = misClientes;
 	}
 
-	public Coche(String matricula, String marca, String modelo, int ano, String color, Double kms, double precio) {
+	public Coche(String matricula, String marca, String modelo, int ano, String color, Double kilometros, double precio) {
 		this.matricula = matricula;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
 		this.color = color;
-		this.kms = kms;
+		this.kilometros = kilometros;
 		this.precio = precio;
 	}
 
@@ -78,12 +78,12 @@ public class Coche {
 		this.color = color;
 	}
 
-	public Double getKms() {
-		return kms;
+	public Double getKilometros() {
+		return kilometros;
 	}
 
-	public void setKms(Double kms) {
-		this.kms = kms;
+	public void setKilometros(Double kilometros) {
+		this.kilometros = kilometros;
 	}
 
 	public double getPrecio() {
