@@ -7,5 +7,4 @@ public interface IDao<T,K> {
 	T get (K id);
 	Collection <T> getAll();
 	int update (T ob);
-	int delete (T ob);
 }

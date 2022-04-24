@@ -1,6 +1,5 @@
 package model.DataObject;
 
-import java.util.List;
 
 public class Cliente {
 	private int id;
@@ -11,23 +10,9 @@ public class Cliente {
 	private int telefono;
 	private String direccion;
 	private int codigo_postal;
-	List<Coche> misCoches;
 	
 	public Cliente() {
 		
-	}
-
-	public Cliente(int id, String dni, String nombre, String apellidos, String correo, int telefono, String direccion, int codigo_postal,
-			List<Coche> misCoches) {
-		this.id = id;
-		this.dni = dni;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.correo = correo;
-		this.telefono = telefono;
-		this.direccion = direccion;
-		this.codigo_postal = codigo_postal;
-		this.misCoches = misCoches;
 	}
 
 	public Cliente(int id, String dni, String nombre, String apellidos, String correo, int telefono, String direccion, int codigo_postal) {
@@ -95,14 +80,6 @@ public class Cliente {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-
-	public List<Coche> getMisCoches() {
-		return misCoches;
-	}
-
-	public void setMisCoches(List<Coche> misCoches) {
-		this.misCoches = misCoches;
 	}
 
 	public int getCodigo_postal() {
