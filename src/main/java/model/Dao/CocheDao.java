@@ -94,29 +94,29 @@ public class CocheDao implements IDao<Coche, String>{
 	}
 
 	@Override
-	public int update(Coche ob) {
-		int up = 0;
+	public boolean update(Coche ob) {
+		boolean result=false;
 		String consulta="UPDATE coche SET Matricula=?, Marca=?, Modelo=?, Ano=?, Color=?, Kilometros=?, "
 				+ "Precio=? WHERE Matricula=?";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(consulta);
-			sentencia.setString(9, ob.getMatricula());
-			ResultSet rs = sentencia.executeQuery();
-			rs.next();
-			Coche c = new Coche();
-			c.setMatricula(rs.getString(1));
-			c.setMarca(rs.getString(2));
-			c.setModelo(rs.getString(3));
-			c.setAno(rs.getInt(4));
-			c.setColor(rs.getString(5));
-			c.setKilometros(rs.getDouble(6));
-			c.setPrecio(rs.getDouble(7));
-			
+			sentencia.setString(8, ob.getMatricula());
+			sentencia.executeUpdate();
+			Coche c = get(ob.getMatricula());
+			ob.setMatricula(c.getMatricula());
+			ob.setMarca(c.getMarca());
+			ob.setModelo(c.getModelo());
+			ob.setAno(c.getAno());
+			ob.setColor(c.getColor());
+			ob.setKilometros(c.getKilometros());
+			ob.setPrecio(c.getPrecio());
+			result=true;
 		} catch (SQLException e) {
+			result=false;
 			e.printStackTrace();
 		}
 		
-		return up;
+		return result;
 	}
 
 }

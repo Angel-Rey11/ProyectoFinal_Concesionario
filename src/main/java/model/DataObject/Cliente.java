@@ -25,6 +25,17 @@ public class Cliente {
 		this.direccion = direccion;
 		this.codigo_postal = codigo_postal;
 	}
+	
+	public Cliente(String dni, String nombre, String apellidos, String correo, int telefono, String direccion,
+			int codigo_postal) {
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.correo = correo;
+		this.telefono = telefono;
+		this.direccion = direccion;
+		this.codigo_postal = codigo_postal;
+	}
 
 	public int getId() {
 		return id;

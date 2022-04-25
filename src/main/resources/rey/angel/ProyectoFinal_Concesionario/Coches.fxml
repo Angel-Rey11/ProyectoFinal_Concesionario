@@ -23,7 +23,7 @@
             <Insets top="50.0" />
          </padding>
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Clientes">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Clientes">
                <graphic>
                   <Icon content="IMPORT_CONTACTS" />
                </graphic>
@@ -42,7 +42,7 @@
                   <Insets top="55.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Ventas">
+            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" onAction="#switchToVentas" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Ventas">
                <graphic>
                   <Icon content="SHOP" />
                </graphic>
@@ -53,7 +53,7 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 12;" text="Menú Principal">
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 12;" text="Menú Principal">
                <graphic>
                   <Icon content="HOME" />
                </graphic>
@@ -100,7 +100,7 @@
                               <Insets left="30.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#switchToFormulario" prefHeight="28.0" prefWidth="159.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Añadir Vehículo">
+                        <Button mnemonicParsing="false" onAction="#switchToFormularioCoches" prefHeight="28.0" prefWidth="159.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Añadir Vehículo">
                            <HBox.margin>
                               <Insets left="80.0" />
                            </HBox.margin>

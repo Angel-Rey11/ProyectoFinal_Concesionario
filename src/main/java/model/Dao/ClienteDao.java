@@ -98,29 +98,30 @@ public class ClienteDao implements IDao<Cliente,String>{
 	}
 
 	@Override
-	public int update(Cliente ob) {
-		int up = 0;
+	public boolean update(Cliente ob) {
+		boolean result = false;
 		String consulta="UPDATE cliente SET ID=?, DNI=?, Nombre=?, Apellidos=?, Correo=?, Teléfono=?, Dirección=?, "
 				+ "Codigo_Postal=? WHERE DNI=?";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(consulta);
 			sentencia.setString(9, ob.getDni());
-			ResultSet rs = sentencia.executeQuery();
-			rs.next();
-			Cliente c = new Cliente();
-			c.setId(rs.getInt(1));
-			c.setDni(rs.getString(2));
-			c.setNombre(rs.getString(3));
-			c.setApellidos(rs.getString(4));
-			c.setCorreo(rs.getString(5));
-			c.setTelefono(rs.getInt(6));
-			c.setDireccion(rs.getString(7));
-			c.setCodigo_postal(rs.getInt(8));
+			sentencia.executeUpdate();
+			Cliente c = get(ob.getDni());
+			ob.setId(c.getId());
+			ob.setDni(c.getDni());
+			ob.setNombre(c.getNombre());
+			ob.setApellidos(c.getApellidos());
+			ob.setCorreo(c.getCorreo());
+			ob.setTelefono(c.getTelefono());
+			ob.setDireccion(c.getDireccion());
+			ob.setCodigo_postal(c.getCodigo_postal());
+			result=true;
 		} catch (SQLException e) {
+			result=false;
 			e.printStackTrace();
 		}
 		
-		return up;
+		return result;
 	}
 
 }
