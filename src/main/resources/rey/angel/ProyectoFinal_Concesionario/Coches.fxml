@@ -66,9 +66,9 @@
             </Button>
          </children>
       </VBox>
-      <VBox layoutX="215.0" layoutY="144.0" prefHeight="305.0" prefWidth="685.0">
+      <VBox layoutX="215.0" layoutY="136.0" prefHeight="313.0" prefWidth="685.0">
          <children>
-            <GridPane prefHeight="305.0" prefWidth="487.0">
+            <GridPane prefHeight="308.0" prefWidth="685.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -77,7 +77,7 @@
                 <RowConstraints maxHeight="279.6666564941406" minHeight="10.0" prefHeight="277.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView prefHeight="277.0" prefWidth="630.0" GridPane.rowIndex="1">
+                  <TableView fx:id="tab" onSort="#ShowCars" prefHeight="277.0" prefWidth="630.0" GridPane.rowIndex="1">
                     <columns>
                       <TableColumn prefWidth="82.66665649414062" text="Matrícula" />
                       <TableColumn prefWidth="98.0" text="Marca" />
@@ -95,18 +95,29 @@
                               <Insets />
                            </HBox.margin>
                         </Icon>
-                        <TextField prefHeight="25.0" prefWidth="301.0" promptText="BUSCAR" style="-fx-background-color: #053CC8;">
+                        <TextField prefHeight="25.0" prefWidth="193.0" promptText="BUSCAR" style="-fx-background-color: #053CC8;">
                            <HBox.margin>
-                              <Insets left="30.0" />
+                              <Insets left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#switchToFormularioCoches" prefHeight="28.0" prefWidth="159.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Añadir Vehículo">
+                        <Button mnemonicParsing="false" onAction="#switchToFormularioCoches" prefHeight="41.0" prefWidth="159.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Añadir Vehículo">
                            <HBox.margin>
-                              <Insets left="80.0" />
+                              <Insets left="40.0" />
                            </HBox.margin>
                            <graphic>
                               <Icon content="ADD" />
                            </graphic>
+                        </Button>
+                        <Button layoutX="271.0" layoutY="10.0" mnemonicParsing="false" onAction="#ModifyCar" prefHeight="29.0" prefWidth="165.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Modificar Vehículo">
+                           <graphic>
+                              <Icon content="MODE_EDIT" />
+                           </graphic>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="40.0" />
+                           </HBox.margin>
                         </Button>
                      </children>
                   </HBox>
