@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -22,46 +23,62 @@
             <Insets top="50.0" />
          </padding>
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Clientes" textFill="WHITE">
-               <graphic>
-                  <Icon content="IMPORT_CONTACTS" />
-               </graphic>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Clientes" textFill="WHITE">
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets right="15.0" top="30.0" />
                </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToCoches" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Vehiculos" textFill="WHITE">
                <graphic>
-                  <Icon content="DIRECTIONS_CAR" />
+                  <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/rating.png" />
+                     </image>
+                  </ImageView>
                </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToCoches" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Vehiculos" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
                <VBox.margin>
                   <Insets top="55.0" />
                </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Ventas" textFill="WHITE">
                <graphic>
-                  <Icon content="SHOP" />
+                  <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/sport-car.png" />
+                     </image>
+                  </ImageView>
                </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Ventas" textFill="WHITE">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="20.0" top="60.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/deal.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
                <VBox.margin>
                   <Insets top="60.0" />
                </VBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 12;" text="Menú Principal" textFill="WHITE">
                <graphic>
-                  <Icon content="HOME" />
+                  <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/home.png" />
+                     </image>
+                  </ImageView>
                </graphic>
-               <font>
-                  <Font name="Eras Demi ITC" size="15.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="75.0" />
-               </VBox.margin>
             </Button>
          </children>
       </VBox>
@@ -118,7 +135,7 @@
                   </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <TextField fx:id="DNI" prefHeight="25.0" prefWidth="148.0">
+                        <TextField fx:id="DNI" editable="false" prefHeight="25.0" prefWidth="148.0">
                            <HBox.margin>
                               <Insets left="20.0" top="20.0" />
                            </HBox.margin>
@@ -179,12 +196,16 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#saveChanges" prefHeight="31.0" prefWidth="166.0" style="-fx-font-family: elephant; -fx-background-color: #053CC8;" text="Guardar Cambios" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#saveChanges" prefHeight="31.0" prefWidth="171.0" style="-fx-font-family: elephant; -fx-background-color: #053CC8;" text="Guardar Cambios" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
                      <graphic>
-                        <Icon content="SAVE" />
+                        <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/diskette.png" />
+                           </image>
+                        </ImageView>
                      </graphic>
                   </Button>
                </children>
@@ -197,14 +218,22 @@
                         <Separator layoutX="3.0" layoutY="62.0" prefHeight="5.0" prefWidth="472.0" style="-fx-background-color: #053CC8;" />
                         <Label layoutX="14.0" layoutY="91.0" prefHeight="18.0" prefWidth="213.0" style="-fx-font-family: elephant;" text="Introduzca el DNI del Cliente:" />
                         <TextField fx:id="modifica" layoutX="228.0" layoutY="87.0" prefHeight="25.0" prefWidth="193.0" />
-                        <Button layoutX="77.0" layoutY="137.0" mnemonicParsing="false" onAction="#modifyClient" prefHeight="31.0" prefWidth="116.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Continuar" textFill="WHITE">
+                        <Button layoutX="77.0" layoutY="137.0" mnemonicParsing="false" onAction="#modifyClient" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Continuar" textFill="WHITE">
                            <graphic>
-                              <Icon content="NAVIGATE_NEXT" />
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/right-arrow.png" />
+                                 </image>
+                              </ImageView>
                            </graphic>
                         </Button>
                         <Button cancelButton="true" layoutX="316.0" layoutY="137.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="122.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Cancelar" textFill="WHITE">
                            <graphic>
-                              <Icon content="CANCEL" />
+                              <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/boton.png" />
+                                 </image>
+                              </ImageView>
                            </graphic>
                         </Button>
                      </children>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.charm.glisten.control.ExpansionPanel?>
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -23,46 +24,62 @@
             <Insets top="50.0" />
          </padding>
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Clientes" textFill="WHITE">
-               <graphic>
-                  <Icon content="IMPORT_CONTACTS" />
-               </graphic>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Clientes" textFill="WHITE">
                <VBox.margin>
-                  <Insets top="30.0" />
+                  <Insets right="10.0" top="30.0" />
                </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Vehiculos" textFill="WHITE">
                <graphic>
-                  <Icon content="DIRECTIONS_CAR" />
+                  <ImageView fitHeight="32.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/rating.png" />
+                     </image>
+                  </ImageView>
                </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Vehiculos" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
                <VBox.margin>
                   <Insets top="55.0" />
                </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" onAction="#switchToVentas" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Ventas" textFill="WHITE">
                <graphic>
-                  <Icon content="SHOP" />
+                  <ImageView fitHeight="36.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/sport-car.png" />
+                     </image>
+                  </ImageView>
                </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" onAction="#switchToVentas" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Ventas" textFill="WHITE">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="25.0" top="60.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/deal.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
                <VBox.margin>
                   <Insets top="60.0" />
                </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 12;" text="Menú Principal" textFill="WHITE">
                <graphic>
-                  <Icon content="HOME" />
+                  <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/home.png" />
+                     </image>
+                  </ImageView>
                </graphic>
-               <font>
-                  <Font name="Eras Demi ITC" size="15.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="75.0" />
-               </VBox.margin>
             </Button>
          </children>
       </VBox>
@@ -77,47 +94,58 @@
                 <RowConstraints maxHeight="279.6666564941406" minHeight="10.0" prefHeight="277.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView fx:id="tab" prefHeight="277.0" prefWidth="630.0" GridPane.rowIndex="1">
+                  <TableView fx:id="tab" onSort="#initialize" prefHeight="271.0" prefWidth="685.0" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn prefWidth="82.66665649414062" text="Matrícula" />
-                      <TableColumn prefWidth="98.0" text="Marca" />
-                        <TableColumn prefWidth="102.66668701171875" text="Modelo" />
-                        <TableColumn prefWidth="57.3333740234375" text="Año" />
-                        <TableColumn prefWidth="82.6666259765625" text="Color" />
-                        <TableColumn prefWidth="111.33331298828125" text="Kilometros" />
-                        <TableColumn prefWidth="147.3333740234375" text="Precio" />
+                      <TableColumn fx:id="Matricula" prefWidth="82.66665649414062" text="Matrícula" />
+                      <TableColumn fx:id="Marca" prefWidth="98.0" text="Marca" />
+                        <TableColumn fx:id="Modelo" prefWidth="102.66668701171875" text="Modelo" />
+                        <TableColumn fx:id="Ano" prefWidth="57.3333740234375" text="Año" />
+                        <TableColumn fx:id="Color" prefWidth="82.6666259765625" text="Color" />
+                        <TableColumn fx:id="Kms" prefWidth="111.33331298828125" text="Kilometros" />
+                        <TableColumn fx:id="Precio" prefWidth="147.3333740234375" text="Precio" />
                     </columns>
                   </TableView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Icon content="SEARCH" prefHeight="28.0" prefWidth="37.0">
+                        <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
-                              <Insets />
+                              <Insets left="20.0" />
                            </HBox.margin>
-                        </Icon>
-                        <TextField prefHeight="25.0" prefWidth="193.0" promptText="BUSCAR" style="-fx-background-color: #053CC8;">
+                           <image>
+                              <Image url="@../images/buscar.png" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="27.0" prefWidth="170.0" promptText="BUSCAR" style="-fx-background-color: #053CC8; -fx-font-size: 14px;">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#switchToFormularioCoches" prefHeight="27.0" prefWidth="159.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Añadir Vehículo" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#switchToFormularioCoches" prefHeight="25.0" prefWidth="166.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Añadir Vehículo" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="40.0" />
                            </HBox.margin>
                            <graphic>
-                              <Icon content="ADD" />
+                              <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/plus.png" />
+                                 </image>
+                              </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="271.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToModCar" prefHeight="27.0" prefWidth="165.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Modificar Vehículo" textFill="WHITE">
-                           <graphic>
-                              <Icon content="MODE_EDIT" />
-                           </graphic>
+                        <Button layoutX="271.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToModCar" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Modificar Vehículo" textFill="WHITE">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                            <HBox.margin>
-                              <Insets left="40.0" />
+                              <Insets left="30.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/edit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
                      </children>
                   </HBox>
