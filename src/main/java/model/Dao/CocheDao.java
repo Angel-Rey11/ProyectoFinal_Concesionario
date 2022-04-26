@@ -1,5 +1,6 @@
 package model.Dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.Collection;
 
 import Interfaces.IDao;
 import model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.ErrorModController;
 import utils.Connect;
 
 public class CocheDao implements IDao<Coche, String>{
@@ -52,16 +54,22 @@ public class CocheDao implements IDao<Coche, String>{
 			PreparedStatement sentencia = miConexion.prepareStatement(sql);
 			sentencia.setString(1, id);
 			ResultSet rs = sentencia.executeQuery();
-			rs.next();
-			c = new Coche();
-			c.setMatricula(rs.getString(1));
-			c.setMarca(rs.getString(2));
-			c.setModelo(rs.getString(3));
-			c.setAno(rs.getInt(4));
-			c.setColor(rs.getString(5));
-			c.setKilometros(rs.getDouble(6));
-			c.setPrecio(rs.getDouble(7));
-			
+			if (rs.next()) {
+				c = new Coche();
+				c.setMatricula(rs.getString(1));
+				c.setMarca(rs.getString(2));
+				c.setModelo(rs.getString(3));
+				c.setAno(rs.getInt(4));
+				c.setColor(rs.getString(5));
+				c.setKilometros(rs.getDouble(6));
+				c.setPrecio(rs.getDouble(7));
+			} else {
+				try {
+					new ErrorModController().InitError();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

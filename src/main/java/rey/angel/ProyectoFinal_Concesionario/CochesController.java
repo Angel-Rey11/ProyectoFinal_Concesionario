@@ -28,19 +28,7 @@ public class CochesController {
 	
 	@FXML
 	private void ModifyCar() throws IOException {
-		TextInputDialog dialogo = new TextInputDialog();
-		dialogo.setTitle("Modificar Vehiculo");
-		dialogo.setHeaderText("Por favor, ingresa la matrícula del vehículo");
-		dialogo.setContentText("Introduzca la matrícula del cliente");
-		dialogo.initStyle(StageStyle.UTILITY);
-		Optional<String> respuesta = dialogo.showAndWait();
-		respuesta.ifPresent((string)->{
-			try {
-				App.setRoot("ModificaCoche");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
+		App.setRoot("ModificaCoche");
 	}
 	
 	@FXML

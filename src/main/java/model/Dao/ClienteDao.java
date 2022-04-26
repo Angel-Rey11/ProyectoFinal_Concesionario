@@ -1,5 +1,6 @@
 package model.Dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.Collection;
 
 import Interfaces.IDao;
 import model.DataObject.Cliente;
+import rey.angel.ProyectoFinal_Concesionario.ErrorModController;
 import utils.Connect;
 
 public class ClienteDao implements IDao<Cliente,String>{
@@ -54,17 +56,23 @@ public class ClienteDao implements IDao<Cliente,String>{
 			PreparedStatement sentencia = miConexion.prepareStatement(sql);
 			sentencia.setString(1, id);
 			ResultSet rs = sentencia.executeQuery();
-			rs.next();
-			c = new Cliente();
-			c.setId(rs.getInt(1));
-			c.setDni(rs.getString(2));
-			c.setNombre(rs.getString(3));
-			c.setApellidos(rs.getString(4));
-			c.setCorreo(rs.getString(5));
-			c.setTelefono(rs.getInt(6));
-			c.setDireccion(rs.getString(7));
-			c.setCodigo_postal(rs.getInt(8));
-			
+			if (rs.next()) {
+				c = new Cliente();
+				c.setId(rs.getInt(1));
+				c.setDni(rs.getString(2));
+				c.setNombre(rs.getString(3));
+				c.setApellidos(rs.getString(4));
+				c.setCorreo(rs.getString(5));
+				c.setTelefono(rs.getInt(6));
+				c.setDireccion(rs.getString(7));
+				c.setCodigo_postal(rs.getInt(8));
+			} else {
+				try {
+					new ErrorModController().InitError();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

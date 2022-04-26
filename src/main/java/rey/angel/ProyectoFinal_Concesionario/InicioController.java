@@ -28,19 +28,7 @@ public class InicioController {
 	
 	@FXML
 	private void ModifyClient() throws IOException {
-		TextInputDialog dialogo = new TextInputDialog();
-		dialogo.setTitle("Modificar Cliente");
-		dialogo.setHeaderText("Por favor, ingresa el DNI del cliente");
-		dialogo.setContentText("Introduzca el DNI del cliente");
-		dialogo.initStyle(StageStyle.UTILITY);
-		Optional<String> respuesta = dialogo.showAndWait();
-		respuesta.ifPresent((String)->{
-			try {
-				App.setRoot("ModificaCliente");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
+		App.setRoot("ModificaCliente");
 	}
 
     @FXML
