@@ -3,8 +3,8 @@ package rey.angel.ProyectoFinal_Concesionario;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import model.Dao.ClienteDao;
-import model.DataObject.Cliente;
+import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 
 public class FormularioClienteController {
 	
@@ -28,14 +28,17 @@ public class FormularioClienteController {
 
     @FXML
     private void switchToInicio() throws IOException {
-        App.setRoot("InicioController");
+        App.setRoot("Inicio");
+    }
+    
+    @FXML
+    private void switchToCoches() throws IOException {
+        App.setRoot("Coches");
     }
     
     @FXML
     private void AddClient() throws IOException {
-    	int telef = Integer.parseInt(telefono.getText());
-    	int cp = Integer.parseInt(Codigo_postal.getText());
-    	Cliente client = new Cliente(dni.getText(),nombre.getText(),apellidos.getText(),correo.getText(),telef,direccion.getText(),cp);
+    	Cliente client = new Cliente(dni.getText(),nombre.getText(),apellidos.getText(),correo.getText(),telefono.getText(),direccion.getText(),Codigo_postal.getText());
     	cd.insert(client);
     	
     }

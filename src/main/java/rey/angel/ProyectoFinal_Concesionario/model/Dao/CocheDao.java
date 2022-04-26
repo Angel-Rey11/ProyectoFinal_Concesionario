@@ -1,4 +1,4 @@
-package model.Dao;
+package rey.angel.ProyectoFinal_Concesionario.model.Dao;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,18 +9,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import Interfaces.IDao;
-import model.DataObject.Coche;
 import rey.angel.ProyectoFinal_Concesionario.ErrorModController;
-import utils.Connect;
+import rey.angel.ProyectoFinal_Concesionario.Interfaces.IDao;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.utils.Connect;
 
 public class CocheDao implements IDao<Coche, String>{
 	private Connection miConexion;
 	
 	public CocheDao() {
-	}
-
-	public CocheDao(Connection miConexion) {
 		this.miConexion = Connect.getConnection();
 	}
 
@@ -33,10 +30,10 @@ public class CocheDao implements IDao<Coche, String>{
 			sentencia.setString(1, ob.getMatricula());
 			sentencia.setString(2, ob.getMarca());
 			sentencia.setString(3, ob.getModelo());
-			sentencia.setInt(4, ob.getAno());
+			sentencia.setString(4, ob.getAno());
 			sentencia.setString(5, ob.getColor());
-			sentencia.setDouble(6, ob.getKilometros());
-			sentencia.setDouble(6, ob.getPrecio());
+			sentencia.setString(6, ob.getKilometros());
+			sentencia.setString(7, ob.getPrecio());
 			sentencia.executeUpdate();
 			result=true;
 		} catch (SQLException e) {
@@ -59,10 +56,10 @@ public class CocheDao implements IDao<Coche, String>{
 				c.setMatricula(rs.getString(1));
 				c.setMarca(rs.getString(2));
 				c.setModelo(rs.getString(3));
-				c.setAno(rs.getInt(4));
+				c.setAno(rs.getString(4));
 				c.setColor(rs.getString(5));
-				c.setKilometros(rs.getDouble(6));
-				c.setPrecio(rs.getDouble(7));
+				c.setKilometros(rs.getString(6));
+				c.setPrecio(rs.getString(7));
 			} else {
 				try {
 					new ErrorModController().InitError();
@@ -90,10 +87,10 @@ public class CocheDao implements IDao<Coche, String>{
 				aux.setMatricula(rs.getString(1));
 				aux.setMarca(rs.getString(2));
 				aux.setModelo(rs.getString(3));
-				aux.setAno(rs.getInt(4));
+				aux.setAno(rs.getString(4));
 				aux.setColor(rs.getString(5));
-				aux.setKilometros(rs.getDouble(6));
-				aux.setPrecio(rs.getDouble(7));
+				aux.setKilometros(rs.getString(6));
+				aux.setPrecio(rs.getString(7));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -104,20 +101,18 @@ public class CocheDao implements IDao<Coche, String>{
 	@Override
 	public boolean update(Coche ob) {
 		boolean result=false;
-		String consulta="UPDATE coche SET Matricula=?, Marca=?, Modelo=?, Ano=?, Color=?, Kilometros=?, "
+		String consulta="UPDATE coche SET Marca=?, Modelo=?, Ano=?, Color=?, Kilometros=?, "
 				+ "Precio=? WHERE Matricula=?";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(consulta);
-			sentencia.setString(8, ob.getMatricula());
+			sentencia.setString(7, ob.getMatricula());
+			sentencia.setString(1, ob.getMarca());
+			sentencia.setString(2, ob.getModelo());
+			sentencia.setString(3, ob.getAno());
+			sentencia.setString(4, ob.getColor());
+			sentencia.setString(5, ob.getKilometros());
+			sentencia.setString(6, ob.getPrecio());
 			sentencia.executeUpdate();
-			Coche c = get(ob.getMatricula());
-			ob.setMatricula(c.getMatricula());
-			ob.setMarca(c.getMarca());
-			ob.setModelo(c.getModelo());
-			ob.setAno(c.getAno());
-			ob.setColor(c.getColor());
-			ob.setKilometros(c.getKilometros());
-			ob.setPrecio(c.getPrecio());
 			result=true;
 		} catch (SQLException e) {
 			result=false;

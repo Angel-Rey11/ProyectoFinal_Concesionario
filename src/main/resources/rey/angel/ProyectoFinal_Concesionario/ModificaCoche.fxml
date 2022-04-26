@@ -15,14 +15,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rey.angel.ProyectoFinal_Concesionario.ModificaCoche">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rey.angel.ProyectoFinal_Concesionario.ModificaCocheController">
    <children>
       <VBox prefHeight="450.0" prefWidth="215.0" style="-fx-background-color: #053CC8;">
          <padding>
             <Insets top="50.0" />
          </padding>
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Clientes">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Clientes" textFill="WHITE">
                <graphic>
                   <Icon content="IMPORT_CONTACTS" />
                </graphic>
@@ -30,7 +30,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Vehiculos">
+            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToCoches" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Vehiculos" textFill="WHITE">
                <graphic>
                   <Icon content="DIRECTIONS_CAR" />
                </graphic>
@@ -41,7 +41,7 @@
                   <Insets top="55.0" />
                </VBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Ventas">
+            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 18;" text="Ventas" textFill="WHITE">
                <graphic>
                   <Icon content="SHOP" />
                </graphic>
@@ -52,7 +52,7 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 12;" text="Menú Principal">
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 12;" text="Menú Principal" textFill="WHITE">
                <graphic>
                   <Icon content="HOME" />
                </graphic>
@@ -187,7 +187,7 @@
                         </Icon>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#SaveChanges" prefHeight="31.0" prefWidth="164.0" style="-fx-font-family: elephant; -fx-background-color: #053CC8;" text="Guardar Cambios" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#SaveChanges" prefHeight="31.0" prefWidth="164.0" style="-fx-font-family: elephant; -fx-background-color: #053CC8;" text="Guardar Cambios" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="70.0" />
                      </GridPane.margin>
@@ -205,12 +205,12 @@
                         <Separator layoutX="8.0" layoutY="70.0" prefHeight="3.0" prefWidth="443.0" style="-fx-border-color: #053CC8;" />
                         <Label layoutX="14.0" layoutY="106.0" style="-fx-font-size: 14px; -fx-font-family: elephant;" text="Introduce la Matrícula del Vehículo:" />
                         <TextField fx:id="modifica" layoutX="275.0" layoutY="102.0" prefHeight="25.0" prefWidth="170.0" />
-                        <Button layoutX="50.0" layoutY="151.0" mnemonicParsing="false" onAction="#ModifyCar" prefHeight="31.0" prefWidth="116.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Continuar">
+                        <Button layoutX="50.0" layoutY="151.0" mnemonicParsing="false" onAction="#ModifyCar" prefHeight="31.0" prefWidth="116.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Continuar" textFill="WHITE">
                            <graphic>
                               <Icon content="HELP_OUTLINE" />
                            </graphic>
                         </Button>
-                        <Button cancelButton="true" layoutX="298.0" layoutY="151.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="106.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Cancelar">
+                        <Button cancelButton="true" layoutX="298.0" layoutY="151.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="106.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Cancelar" textFill="WHITE">
                            <graphic>
                               <Icon content="HELP_OUTLINE" />
                            </graphic>

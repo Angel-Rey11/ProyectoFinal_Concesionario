@@ -1,19 +1,19 @@
-package model.DataObject;
+package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
 public class Coche {
 	private String matricula;
 	private String marca;
 	private String modelo;
-	private int ano;
+	private String ano;
 	private String color;
-	private Double kilometros;
-	private double precio;
+	private String kilometros;
+	private String precio;
 	
 	public Coche() {
 		
 	}
 
-	public Coche(String matricula, String marca, String modelo, int ano, String color, Double kilometros, double precio) {
+	public Coche(String matricula, String marca, String modelo, String ano, String color, String kilometros, String precio) {
 		this.matricula = matricula;
 		this.marca = marca;
 		this.modelo = modelo;
@@ -47,11 +47,11 @@ public class Coche {
 		this.modelo = modelo;
 	}
 
-	public int getAno() {
+	public String getAno() {
 		return ano;
 	}
 
-	public void setAno(int ano) {
+	public void setAno(String ano) {
 		this.ano = ano;
 	}
 
@@ -63,20 +63,28 @@ public class Coche {
 		this.color = color;
 	}
 
-	public Double getKilometros() {
+	public String getKilometros() {
 		return kilometros;
 	}
 
-	public void setKilometros(Double kilometros) {
+	public void setKilometros(String kilometros) {
 		this.kilometros = kilometros;
 	}
 
-	public double getPrecio() {
+	public String getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(double precio) {
+	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
+
+	@Override
+	public String toString() {
+		return "Coche [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + ", color="
+				+ color + ", kilometros=" + kilometros + ", precio=" + precio + "]";
+	}
+	
+	
 
 }

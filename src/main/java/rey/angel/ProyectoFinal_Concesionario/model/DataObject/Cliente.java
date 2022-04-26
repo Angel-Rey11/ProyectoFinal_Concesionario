@@ -1,4 +1,4 @@
-package model.DataObject;
+package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
 
 public class Cliente {
@@ -7,15 +7,17 @@ public class Cliente {
 	private String nombre;
 	private String apellidos;
 	private String correo;
-	private int telefono;
+	private String telefono;
 	private String direccion;
-	private int codigo_postal;
+	private String codigo_postal;
 	
 	public Cliente() {
 		
 	}
 
-	public Cliente(int id, String dni, String nombre, String apellidos, String correo, int telefono, String direccion, int codigo_postal) {
+	public Cliente(int id, String dni, String nombre, String apellidos, String correo, String telefono,
+			String direccion, String codigo_postal) {
+		super();
 		this.id = id;
 		this.dni = dni;
 		this.nombre = nombre;
@@ -26,8 +28,9 @@ public class Cliente {
 		this.codigo_postal = codigo_postal;
 	}
 	
-	public Cliente(String dni, String nombre, String apellidos, String correo, int telefono, String direccion,
-			int codigo_postal) {
+	public Cliente(String dni, String nombre, String apellidos, String correo, String telefono, String direccion,
+			String codigo_postal) {
+		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -77,11 +80,11 @@ public class Cliente {
 		this.correo = correo;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
@@ -93,11 +96,11 @@ public class Cliente {
 		this.direccion = direccion;
 	}
 
-	public int getCodigo_postal() {
+	public String getCodigo_postal() {
 		return codigo_postal;
 	}
 
-	public void setCodigo_postal(int codigo_postal) {
+	public void setCodigo_postal(String codigo_postal) {
 		this.codigo_postal = codigo_postal;
 	}
 	

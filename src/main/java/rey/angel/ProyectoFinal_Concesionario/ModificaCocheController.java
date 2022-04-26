@@ -5,10 +5,10 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
-import model.Dao.CocheDao;
-import model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 
-public class ModificaCoche {
+public class ModificaCocheController {
 	
 	CocheDao cd = new CocheDao();
 
@@ -35,20 +35,28 @@ public class ModificaCoche {
 	private void ModifyCar() throws IOException {
 			Coche c = cd.get(modifica.getText());
 			Matricula.setText(c.getMatricula());
-			Marca.setText(c.getMatricula());
-			Ano.setText(String.valueOf(c.getAno()));
+			Marca.setText(c.getMarca());
+			Modelo.setText(c.getModelo());
+			Ano.setText(c.getAno());
 			Color.setText(c.getColor());
-			Kms.setText(String.valueOf(c.getKilometros()));
-			precio.setText(String.valueOf(c.getPrecio()));
+			Kms.setText(c.getKilometros());
+			precio.setText(c.getPrecio());
 			mod.setVisible(false);	
 	}
 	
 	@FXML
 	private void SaveChanges() throws IOException {
-		int an = Integer.parseInt(Ano.getText());
-		Double kms = Double.parseDouble(Kms.getText());
-		Double price = Double.parseDouble(precio.getText());
-		Coche car = new Coche (Matricula.getText(),Marca.getText(),Modelo.getText(),an,Color.getText(),kms,price);
+		Coche car = new Coche (Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kms.getText(),precio.getText());
 		cd.update(car);
 	}
+	
+	@FXML
+    private void switchToCoches() throws IOException {
+        App.setRoot("Coches");
+    }
+	
+	@FXML
+    private void switchToInicio() throws IOException {
+        App.setRoot("Inicio");
+    }
 }

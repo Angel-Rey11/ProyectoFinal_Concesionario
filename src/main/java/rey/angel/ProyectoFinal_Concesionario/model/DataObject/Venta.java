@@ -1,4 +1,4 @@
-package model.DataObject;
+package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
 import java.util.Date;
 import java.util.List;

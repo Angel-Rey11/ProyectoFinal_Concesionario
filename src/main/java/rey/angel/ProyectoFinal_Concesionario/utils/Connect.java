@@ -1,4 +1,4 @@
-package utils;
+package rey.angel.ProyectoFinal_Concesionario.utils;
 
 import java.io.File;
 import java.sql.Connection;
@@ -46,7 +46,7 @@ public class Connect {
 		try {
 			contexto = JAXBContext.newInstance(DatosConexion.class);
 			Unmarshaller um = contexto.createUnmarshaller();
-			DatosConexion newR = (DatosConexion) um.unmarshal(new File("conexion.xml"));
+			DatosConexion newR = (DatosConexion) um.unmarshal(new File(file));
 			con = newR;
 			
 		} catch (Exception e) {

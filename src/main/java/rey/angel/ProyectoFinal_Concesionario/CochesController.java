@@ -8,8 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.StageStyle;
-import model.Dao.CocheDao;
-import model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 
 public class CochesController {
 	
@@ -17,19 +17,6 @@ public class CochesController {
 	
 	@FXML
 	private TableView<Coche> tab;
-	
-	@FXML
-	private void ShowCars() throws IOException {
-		Collection<Coche> misCoches = cd.getAll();
-		for (Coche c: misCoches) {
-			tab.getItems().add(c);
-		}
-	}
-	
-	@FXML
-	private void ModifyCar() throws IOException {
-		App.setRoot("ModificaCoche");
-	}
 	
 	@FXML
     private void switchToInicio() throws IOException {
@@ -49,5 +36,10 @@ public class CochesController {
 	@FXML
     private void switchToFormularioCoches() throws IOException {
         App.setRoot("FormularioCoches");
+    }
+	
+	@FXML
+    private void switchToModCar() throws IOException {
+        App.setRoot("ModificaCoche");
     }
 }

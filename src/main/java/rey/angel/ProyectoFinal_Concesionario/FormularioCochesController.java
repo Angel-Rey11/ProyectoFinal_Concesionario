@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import model.Dao.CocheDao;
-import model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 
 public class FormularioCochesController {
 	
@@ -28,15 +28,17 @@ public class FormularioCochesController {
 	
 	@FXML
     private void switchToInicio() throws IOException {
-        App.setRoot("InicioController");
+        App.setRoot("Inicio");
+    }
+	
+	@FXML
+    private void switchToCoches() throws IOException {
+        App.setRoot("Coches");
     }
 	
 	@FXML
 	private void AddCar() throws IOException {
-		int an = Integer.parseInt(Ano.getText());
-		Double kms = Double.parseDouble(Kilometros.getText());
-		Double price = Double.parseDouble(Precio.getText());
-		Coche car = new Coche(Matricula.getText(),Marca.getText(),Modelo.getText(),an,Color.getText(),kms,price);
+		Coche car = new Coche(Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kilometros.getText(),Precio.getText());
 		cd.insert(car);
 	}
 }

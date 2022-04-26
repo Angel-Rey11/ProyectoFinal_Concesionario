@@ -3,14 +3,12 @@ package rey.angel.ProyectoFinal_Concesionario;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
-import model.Dao.ClienteDao;
-import model.DataObject.Cliente;
+import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 
-public class ModificaCliente {
+public class ModificaClienteController {
 	
 	ClienteDao cd = new ClienteDao();
 	
@@ -38,19 +36,28 @@ public class ModificaCliente {
 		Cliente c = cd.get(modifica.getText());
 		DNI.setText(c.getDni());
 		Nombre.setText(c.getNombre());
-		Apellidos.setText(c.getCorreo());
-		Teléfono.setText(String.valueOf(c.getTelefono()));
+		Apellidos.setText(c.getApellidos());
+		Correo.setText(c.getCorreo());
+		Teléfono.setText(c.getTelefono());
 		Dirección.setText(c.getDireccion());
-		Codigo_Postal.setText(String.valueOf(c.getCodigo_postal()));
+		Codigo_Postal.setText(c.getCodigo_postal());
 		mod.setVisible(false);
 	}
 	
 	@FXML
 	private void saveChanges() throws IOException {
-		int telef = Integer.parseInt(Teléfono.getText());
-    	int cp = Integer.parseInt(Codigo_Postal.getText());
-    	Cliente c = new Cliente(DNI.getText(),Nombre.getText(),Apellidos.getText(),Correo.getText(),telef,Dirección.getText(),cp);
+    	Cliente c = new Cliente(DNI.getText(),Nombre.getText(),Apellidos.getText(),Correo.getText(),Teléfono.getText(),Dirección.getText(),Codigo_Postal.getText());
     	cd.update(c);
 	}
+	
+	@FXML
+    private void switchToCoches() throws IOException {
+        App.setRoot("Coches");
+    }
+	
+	@FXML
+    private void switchToInicio() throws IOException {
+        App.setRoot("Inicio");
+    }
 	
 }

@@ -1,4 +1,4 @@
-package model.Dao;
+package rey.angel.ProyectoFinal_Concesionario.model.Dao;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,21 +9,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import Interfaces.IDao;
-import model.DataObject.Cliente;
 import rey.angel.ProyectoFinal_Concesionario.ErrorModController;
-import utils.Connect;
+import rey.angel.ProyectoFinal_Concesionario.Interfaces.IDao;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
+import rey.angel.ProyectoFinal_Concesionario.utils.Connect;
 
 public class ClienteDao implements IDao<Cliente,String>{
 	private Connection miConexion;
 	
 	public ClienteDao() {
-	
-	}
-
-	public ClienteDao(Connection miConexion) {
 		this.miConexion = Connect.getConnection();
 	}
+
 
 	@Override
 	public boolean insert(Cliente ob) {
@@ -36,9 +33,9 @@ public class ClienteDao implements IDao<Cliente,String>{
 			sentencia.setString(3, ob.getNombre());
 			sentencia.setString(4, ob.getApellidos());
 			sentencia.setString(5, ob.getCorreo());
-			sentencia.setInt(6, ob.getTelefono());
+			sentencia.setString(6, ob.getTelefono());
 			sentencia.setString(7, ob.getDireccion());
-			sentencia.setInt(8, ob.getCodigo_postal());
+			sentencia.setString(8, ob.getCodigo_postal());
 			sentencia.executeUpdate();
 			result=true;
 		} catch (SQLException e) {
@@ -63,9 +60,9 @@ public class ClienteDao implements IDao<Cliente,String>{
 				c.setNombre(rs.getString(3));
 				c.setApellidos(rs.getString(4));
 				c.setCorreo(rs.getString(5));
-				c.setTelefono(rs.getInt(6));
+				c.setTelefono(rs.getString(6));
 				c.setDireccion(rs.getString(7));
-				c.setCodigo_postal(rs.getInt(8));
+				c.setCodigo_postal(rs.getString(8));
 			} else {
 				try {
 					new ErrorModController().InitError();
@@ -94,9 +91,9 @@ public class ClienteDao implements IDao<Cliente,String>{
 				aux.setNombre(rs.getString(3));
 				aux.setApellidos(rs.getString(4));
 				aux.setCorreo(rs.getString(5));
-				aux.setTelefono(rs.getInt(6));
+				aux.setTelefono(rs.getString(6));
 				aux.setDireccion(rs.getString(7));
-				aux.setCodigo_postal(rs.getInt(8));
+				aux.setCodigo_postal(rs.getString(8));
 				result.add(aux);
 			}
 		} catch (SQLException e) {
@@ -108,21 +105,18 @@ public class ClienteDao implements IDao<Cliente,String>{
 	@Override
 	public boolean update(Cliente ob) {
 		boolean result = false;
-		String consulta="UPDATE cliente SET ID=?, DNI=?, Nombre=?, Apellidos=?, Correo=?, Teléfono=?, Dirección=?, "
+		String consulta="UPDATE cliente SET Nombre=?, Apellidos=?, Correo=?, Teléfono=?, Dirección=?, "
 				+ "Codigo_Postal=? WHERE DNI=?";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(consulta);
-			sentencia.setString(9, ob.getDni());
+			sentencia.setString(7, ob.getDni());
+			sentencia.setString(1, ob.getNombre());
+			sentencia.setString(2, ob.getApellidos());
+			sentencia.setString(3, ob.getCorreo());
+			sentencia.setString(4, ob.getTelefono());
+			sentencia.setString(5, ob.getDireccion());
+			sentencia.setString(6, ob.getCodigo_postal());
 			sentencia.executeUpdate();
-			Cliente c = get(ob.getDni());
-			ob.setId(c.getId());
-			ob.setDni(c.getDni());
-			ob.setNombre(c.getNombre());
-			ob.setApellidos(c.getApellidos());
-			ob.setCorreo(c.getCorreo());
-			ob.setTelefono(c.getTelefono());
-			ob.setDireccion(c.getDireccion());
-			ob.setCodigo_postal(c.getCodigo_postal());
 			result=true;
 		} catch (SQLException e) {
 			result=false;

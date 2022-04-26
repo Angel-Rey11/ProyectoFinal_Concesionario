@@ -5,11 +5,12 @@ import java.util.Collection;
 import java.util.Optional;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.StageStyle;
-import model.Dao.ClienteDao;
-import model.DataObject.Cliente;
+import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 
 public class InicioController {
 	
@@ -17,19 +18,8 @@ public class InicioController {
 	
 	@FXML
 	private TableView<Cliente> tab;
-	
 	@FXML
-	private void ShowClients() throws IOException {
-		Collection<Cliente> misClientes = cd.getAll();
-		for (Cliente c: misClientes) {
-			tab.getItems().add(c);
-		}
-	}
-	
-	@FXML
-	private void ModifyClient() throws IOException {
-		App.setRoot("ModificaCliente");
-	}
+	private TableColumn<Cliente, String> id;
 
     @FXML
     private void switchToFormulario() throws IOException {
@@ -49,5 +39,10 @@ public class InicioController {
     @FXML
     private void switchToMenu() throws IOException {
         App.setRoot("MenuPrincipal");
+    }
+    
+    @FXML
+    private void switchToModClient() throws IOException {
+        App.setRoot("ModificaCliente");
     }
 }

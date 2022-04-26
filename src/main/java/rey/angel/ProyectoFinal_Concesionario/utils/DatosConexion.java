@@ -1,4 +1,4 @@
-package utils;
+package rey.angel.ProyectoFinal_Concesionario.utils;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
