@@ -1,11 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rey.angel.ProyectoFinal_Concesionario.VentasController">
    <children>
-      <VBox prefHeight="450.0" prefWidth="417.0" style="-fx-background-color: blue;" />
-      <VBox layoutX="417.0" prefHeight="450.0" prefWidth="483.0" style="-fx-background-color: red;" />
+      <VBox prefHeight="450.0" prefWidth="215.0" style="-fx-background-color: #053CC8;">
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Clientes" textFill="#fffefe">
+               <VBox.margin>
+                  <Insets right="10.0" top="30.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/rating.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToCoches" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Vehiculos" textFill="WHITE">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="55.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/sport-car.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Ventas" textFill="WHITE">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="20.0" top="60.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/deal.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="60.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <VBox layoutX="215.0" layoutY="35.0" prefHeight="108.0" prefWidth="685.0" style="-fx-background-color: #053CC8;">
+         <children>
+            <Label style="-fx-font-family: elephant; -fx-font-size: 40; -fx-border-color: white;" text="VENTAS" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="17.0" />
+               </VBox.margin>
+            </Separator>
+         </children>
+      </VBox>
+      <Separator layoutX="720.0" layoutY="143.0" orientation="VERTICAL" prefHeight="307.0" prefWidth="6.0" style="-fx-background-color: #053CC8;" />
+      <Button layoutX="735.0" layoutY="155.0" mnemonicParsing="false" onAction="#addSell" prefHeight="46.0" prefWidth="155.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-background-radius: 40px;" text="Añadir Venta" textFill="#fffcfc">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/plus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="735.0" layoutY="251.0" mnemonicParsing="false" onAction="#ModifyMenu" prefHeight="46.0" prefWidth="155.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-background-radius: 40px;" text="Modificar Venta" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="735.0" layoutY="358.0" mnemonicParsing="false" onAction="#switchToShowSells" prefHeight="46.0" prefWidth="155.0" style="-fx-background-radius: 40px; -fx-background-color: #053CC8; -fx-font-family: elephant;" text="Mostrar Ventas" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/vision.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <DialogPane layoutX="217.0" layoutY="146.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="501.0" style="-fx-border-color: #053CC8;">
+          <header>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="480.0">
+               <children>
+                  <Label layoutX="149.0" layoutY="14.0" style="-fx-font-family: elephant; -fx-font-size: 20;" text="AÑADIR VENTA" />
+                  <Separator layoutX="140.0" layoutY="40.0" prefWidth="200.0" style="-fx-background-color: black;" />
+                  <Label layoutX="31.0" layoutY="58.0" style="-fx-font-size: 14px; -fx-font-family: elephant;" text="Fecha de compra del vehículo:" />
+                  <DatePicker fx:id="date" layoutX="253.0" layoutY="55.0" onAction="#ConfiguraData" promptText="AÑADIR FECHA" style="-fx-background-color: #053CC8;" />
+                  <Label layoutX="185.0" layoutY="105.0" style="-fx-font-size: 14px; -fx-font-family: elephant;" text="Cliente:" />
+                  <Label layoutX="174.0" layoutY="151.0" style="-fx-font-size: 14px; -fx-font-family: elephant;" text="Vehículo:" />
+                  <ChoiceBox fx:id="cliente" layoutX="256.0" layoutY="102.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-color: #053CC8;" />
+                  <ChoiceBox fx:id="coche" layoutX="256.0" layoutY="148.0" prefHeight="27.0" prefWidth="174.0" style="-fx-background-color: #053CC8;" />
+                  <Button layoutX="272.0" layoutY="205.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="205.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-background-radius: 40px;" text="Guardar Modificación" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/pencil.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <DialogPane fx:id="mod" layoutX="101.0" layoutY="-107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="484.0" visible="false">
+                      <header>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="483.0" style="-fx-border-color: #053CC8;">
+                           <children>
+                              <Label layoutX="124.0" layoutY="20.0" style="-fx-font-size: 20; -fx-font-family: elephant;" text="MODIFICAR VENTA" />
+                              <Separator layoutY="55.0" prefHeight="3.0" prefWidth="480.0" style="-fx-background-color: black;" />
+                              <Label layoutX="53.0" layoutY="76.0" style="-fx-font-family: elephant; -fx-background-size: 16;" text="Para modificar, por favor, introduzca el DNI del Cliente." />
+                              <Label layoutX="53.0" layoutY="128.0" style="-fx-font-family: elephant;" text="DNI del Cliente:" />
+                              <TextField layoutX="177.0" layoutY="124.0" prefHeight="25.0" prefWidth="194.0" />
+                              <Button layoutX="76.0" layoutY="204.0" mnemonicParsing="false" onAction="#ModifySell" prefHeight="33.0" prefWidth="131.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-background-radius: 40px;" text="Continuar" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/right-arrow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="312.0" layoutY="204.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-background-radius: 40px;" text="Cancelar" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/boton.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                      </header>
+                      <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+                      </content>
+                      <expandableContent>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+                      </expandableContent>
+                  </DialogPane>
+                  <Button layoutX="31.0" layoutY="206.0" mnemonicParsing="false" onAction="#SaveAndAdd" prefHeight="33.0" prefWidth="194.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-background-radius: 40px;" text="Guardar y Añadir" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/diskette.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+          </header>
+          <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+          </content>
+          <expandableContent>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+          </expandableContent>
+      </DialogPane>
    </children>
 </AnchorPane>

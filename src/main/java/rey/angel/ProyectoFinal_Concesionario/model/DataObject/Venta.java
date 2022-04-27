@@ -1,33 +1,33 @@
 package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class Venta {
 	private Date fecha_Compra;
-	private Coche coche;
 	private Cliente cliente;
+	private Coche coche;
 	List<Cliente> misClientes;
 	List<Coche> misCoches;
 
 	public Venta() {
 		
 	}
-	
-	public Venta(Date fecha_Compra, Coche coche, Cliente cliente, List<Cliente> misClientes, List<Coche> misCoches) {
+
+	public Venta(Date fecha_Compra, Cliente cliente, Coche coche, List<Cliente> misClientes, List<Coche> misCoches) {
+		super();
 		this.fecha_Compra = fecha_Compra;
-		this.coche = coche;
 		this.cliente = cliente;
+		this.coche = coche;
 		this.misClientes = misClientes;
 		this.misCoches = misCoches;
 	}
-
-
-
-	public Venta(Date fecha_Compra, Coche coche, Cliente cliente) {
+	
+	public Venta(Date fecha_Compra, Cliente cliente, Coche coche) {
+		super();
 		this.fecha_Compra = fecha_Compra;
-		this.coche = coche;
 		this.cliente = cliente;
+		this.coche = coche;
 	}
 
 	public Date getFecha_Compra() {

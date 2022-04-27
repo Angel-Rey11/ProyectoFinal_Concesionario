@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rey.angel.ProyectoFinal_Concesionario.MostrarVentasController">
+   <children>
+      <VBox prefHeight="450.0" prefWidth="215.0" style="-fx-background-color: #053CC8;">
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+         <children>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Clientes" textFill="#fffefe">
+               <VBox.margin>
+                  <Insets right="10.0" top="30.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/rating.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToCoche" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Vehiculos" textFill="WHITE">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="55.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/sport-car.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" onAction="#switchToVentas" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Ventas" textFill="WHITE">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="20.0" top="60.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/deal.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator prefWidth="200.0" />
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
+               <font>
+                  <Font name="Eras Demi ITC" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="60.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="215.0" layoutY="102.0" prefHeight="350.0" prefWidth="685.0">
+         <children>
+            <GridPane layoutY="-2.0" prefHeight="350.0" prefWidth="685.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="141.66665649414062" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="314.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TableView fx:id="tab" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                    <columns>
+                      <TableColumn fx:id="date" prefWidth="150.6666717529297" text="Fecha Compra" />
+                      <TableColumn fx:id="cliente" minWidth="0.0" prefWidth="249.99993896484375" text="Cliente" />
+                        <TableColumn fx:id="coche" minWidth="0.0" prefWidth="282.0" text="Vehículo" />
+                    </columns>
+                  </TableView>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/buscar.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <TextField promptText="BUSCAR">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -103,6 +103,14 @@ public class Cliente {
 	public void setCodigo_postal(String codigo_postal) {
 		this.codigo_postal = codigo_postal;
 	}
+
+	@Override
+	public String toString() {
+		return "Cliente ->" + "DNI =" + dni + ", Nombre=" + nombre + ", Apellidos=" + apellidos + ", Correo="
+				+ correo + ", Telefono=" + telefono + ", Direccion=" + direccion + ", Codigo Postal=" + codigo_postal;
+	}
+	
+	
 	
 	
 	
