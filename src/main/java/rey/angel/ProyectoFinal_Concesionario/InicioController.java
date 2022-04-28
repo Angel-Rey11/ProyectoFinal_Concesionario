@@ -4,15 +4,20 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.StageStyle;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
@@ -40,12 +45,33 @@ public class InicioController {
 	private TableColumn<Cliente, String> Direccion;
 	@FXML
 	private TableColumn<Cliente, String> Codigo_Postal;
+	@FXML
+	private TextField search;
+	private List<Cliente> misClientes = (List<Cliente>) cd.getAll();
+	private final ObservableList<Cliente> data = FXCollections.observableArrayList(misClientes);
+	
 	
 	@FXML
 	protected void initialize() {
 		this.configuraTabla();
-		List<Cliente> misClientes = (List<Cliente>) cd.getAll();
 		tab.setItems(FXCollections.observableArrayList(misClientes));
+		FilteredList<Cliente> filteredData = new FilteredList<>(data, e -> true);
+		search.setOnKeyReleased(e -> {
+			search.textProperty().addListener((observableValue, oldValue, newValue) -> {
+				filteredData.setPredicate((Predicate<? super Cliente>) cliente-> {
+					if(newValue == null || newValue.isEmpty()) {
+						return true;
+					}
+					if (cliente.getDni().contains(newValue)) {
+						return true;
+					}
+					return false;
+				});
+			});
+			SortedList<Cliente> sortedData = new SortedList<>(filteredData);
+			sortedData.comparatorProperty().bind(tab.comparatorProperty());
+			tab.setItems(sortedData);
+		});
 	}
 	
 	private void configuraTabla() {

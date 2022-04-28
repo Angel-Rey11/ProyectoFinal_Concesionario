@@ -116,7 +116,7 @@
                               <Insets left="10.0" />
                            </HBox.margin>
                         </ImageView>
-                        <TextField prefHeight="27.0" prefWidth="214.0" promptText="BUSCAR" style="-fx-background-color: #053CC8; -fx-font-size: 14px;">
+                        <TextField fx:id="search" prefHeight="27.0" prefWidth="214.0" promptText="BUSCAR" stylesheets="@../css/cssSearch.css">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>

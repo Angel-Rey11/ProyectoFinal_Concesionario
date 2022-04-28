@@ -1,10 +1,13 @@
 package rey.angel.ProyectoFinal_Concesionario;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.format.FormatStyle;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.DialogPane;
@@ -33,6 +36,10 @@ public class VentasController {
 	private ChoiceBox<Coche> coche;
 	@FXML
 	private DatePicker date;
+	@FXML
+	private Button bot;
+	@FXML
+	private Button bot2;
 	
 	@FXML
 	private void addSell() throws IOException {
@@ -63,11 +70,18 @@ public class VentasController {
 	@FXML
 	private void ModifyMenu() throws IOException {
 		mod.setVisible(true);
+		bot2.setVisible(false);
+		
 	}
 	
 	@FXML
 	private void ModifySell() throws IOException {
+		Venta v = vd.get(modifica.getText());
+		date.setValue(v.getFecha_Compra().toLocalDate());
+		cliente.setValue(v.getCliente());
+		coche.setValue(v.getCoche());
 		mod.setVisible(false);
+		bot.setVisible(true);
 	}
 	
 	@FXML

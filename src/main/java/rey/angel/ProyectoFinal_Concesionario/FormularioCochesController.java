@@ -37,6 +37,16 @@ public class FormularioCochesController {
     }
 	
 	@FXML
+	private void switchToVentas() throws IOException {
+		App.setRoot("Ventas");
+	}
+	
+	@FXML
+	private void switchToMenuPrincipal() throws IOException {
+		App.setRoot("MenuPrincipal");
+	}
+	
+	@FXML
 	private void AddCar() throws IOException {
 		Coche car = new Coche(Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kilometros.getText(),Precio.getText());
 		cd.insert(car);

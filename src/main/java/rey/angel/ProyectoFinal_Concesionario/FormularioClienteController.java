@@ -37,6 +37,16 @@ public class FormularioClienteController {
     }
     
     @FXML
+    private void switchToVentas() throws IOException {
+    	App.setRoot("Ventas");
+    }
+    
+    @FXML
+    private void switchToMenuPrincipal() throws IOException {
+    	App.setRoot("MenuPrincipal");
+    }
+    
+    @FXML
     private void AddClient() throws IOException {
     	Cliente client = new Cliente(dni.getText(),nombre.getText(),apellidos.getText(),correo.getText(),telefono.getText(),direccion.getText(),Codigo_postal.getText());
     	cd.insert(client);

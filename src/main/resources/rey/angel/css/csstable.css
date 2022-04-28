@@ -1,0 +1,32 @@
+
+#cliente {
+    -fx-background-color: #72BAEA;
+}
+
+#DNI {
+    -fx-background-color: #72BAEA;
+}
+#Nombre {
+    -fx-background-color: #72BAEA;
+}
+#Apellidos {
+    -fx-background-color: #72BAEA;
+}
+
+#vehiculo {
+	-fx-background-color: #A2F76F;
+}
+
+#Matricula {
+	-fx-background-color: #A2F76F;
+}
+#Modelo {
+	-fx-background-color: #A2F76F;
+}
+#Marca {
+	-fx-background-color: #A2F76F;
+}
+
+#fecha {
+	-fx-background-color: #E9FC6F;
+}

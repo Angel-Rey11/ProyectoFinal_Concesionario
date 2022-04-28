@@ -1,0 +1,5 @@
+.text-field {
+    -fx-background-color: #053CC8;
+    -fx-text-inner-color: #BA55D3;
+    -fx-text-fill: white;
+}

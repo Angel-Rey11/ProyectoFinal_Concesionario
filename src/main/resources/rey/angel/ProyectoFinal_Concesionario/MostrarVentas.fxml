@@ -68,15 +68,15 @@
                </graphic>
             </Button>
             <Separator prefWidth="200.0" />
-            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="36.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
                <VBox.margin>
-                  <Insets left="15.0" top="60.0" />
+                  <Insets left="15.0" top="55.0" />
                </VBox.margin>
                <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/home.png" />
                      </image>
@@ -96,11 +96,23 @@
                 <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="314.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView fx:id="tab" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="tab" onSort="#initialize" prefHeight="314.0" prefWidth="696.0" stylesheets="@../css/csstable.css" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn fx:id="date" prefWidth="150.6666717529297" text="Fecha Compra" />
-                      <TableColumn fx:id="cliente" minWidth="0.0" prefWidth="249.99993896484375" text="Cliente" />
-                        <TableColumn fx:id="coche" minWidth="0.0" prefWidth="282.0" text="Vehículo" />
+                      <TableColumn id="fecha" fx:id="date" prefWidth="213.33335876464844" text="Fecha Compra" />
+                        <TableColumn id="cliente" minWidth="0.0" prefWidth="169.99993896484375" text="Cliente">
+                           <columns>
+                            <TableColumn id="DNI" fx:id="DNI" minWidth="0.0" prefWidth="77.33331298828125" text="DNI" />
+                              <TableColumn id="Nombre" fx:id="Nombre" minWidth="0.0" prefWidth="76.66677856445312" text="Nombre" />
+                              <TableColumn id="Apellidos" fx:id="Apellidos" minWidth="0.0" prefWidth="76.66677856445312" text="Apellidos" />
+                           </columns>
+                        </TableColumn>
+                        <TableColumn id="vehiculo" maxWidth="298.66670735677087" minWidth="-1.0" prefWidth="298.66670735677087" text="Vehículo">
+                           <columns>
+                              <TableColumn id="Matricula" fx:id="Matricula" minWidth="0.0" prefWidth="103.3333740234375" text="Matricula" />
+                              <TableColumn id="Marca" fx:id="Marca" minWidth="0.0" prefWidth="56.66668701171875" text="Marca" />
+                              <TableColumn id="Modelo" fx:id="Modelo" minWidth="0.0" prefWidth="73.33331298828125" text="Modelo" />
+                           </columns>
+                        </TableColumn>
                     </columns>
                   </TableView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -113,7 +125,7 @@
                               <Insets left="30.0" />
                            </HBox.margin>
                         </ImageView>
-                        <TextField promptText="BUSCAR">
+                        <TextField fx:id="search" prefHeight="25.0" prefWidth="179.0" promptText="BUSCAR" stylesheets="@../css/cssSearch.css">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
