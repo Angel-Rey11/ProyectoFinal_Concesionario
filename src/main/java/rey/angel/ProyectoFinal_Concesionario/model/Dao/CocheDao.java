@@ -51,7 +51,7 @@ public class CocheDao implements IDao<Coche, String>{
 			PreparedStatement sentencia = miConexion.prepareStatement(sql);
 			sentencia.setString(1, id);
 			ResultSet rs = sentencia.executeQuery();
-			if (rs.next()) {
+			rs.next();
 				c = new Coche();
 				c.setMatricula(rs.getString(1));
 				c.setMarca(rs.getString(2));
@@ -60,13 +60,6 @@ public class CocheDao implements IDao<Coche, String>{
 				c.setColor(rs.getString(5));
 				c.setKilometros(rs.getString(6));
 				c.setPrecio(rs.getString(7));
-			} else {
-				try {
-					new ErrorModController().InitError();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

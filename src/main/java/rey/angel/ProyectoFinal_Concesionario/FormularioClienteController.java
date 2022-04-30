@@ -3,6 +3,11 @@ package rey.angel.ProyectoFinal_Concesionario;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 
@@ -22,6 +27,8 @@ public class FormularioClienteController {
 	private TextField direccion;
 	@FXML
 	private TextField Codigo_postal;
+	@FXML
+	private AnchorPane my;
 	
 	ClienteDao cd = new ClienteDao();
 	
@@ -49,7 +56,6 @@ public class FormularioClienteController {
     @FXML
     private void AddClient() throws IOException {
     	Cliente client = new Cliente(dni.getText(),nombre.getText(),apellidos.getText(),correo.getText(),telefono.getText(),direccion.getText(),Codigo_postal.getText());
-    	cd.insert(client);
-    	
+        cd.insert(client);
+    	}
     }
-}

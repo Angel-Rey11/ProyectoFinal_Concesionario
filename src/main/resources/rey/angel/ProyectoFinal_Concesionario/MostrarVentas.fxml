@@ -136,5 +136,10 @@
             </GridPane>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="117.0" fitWidth="236.0" layoutX="538.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/banderasin.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
