@@ -55,7 +55,33 @@ public class FormularioClienteController {
     
     @FXML
     private void AddClient() throws IOException {
-    	Cliente client = new Cliente(dni.getText(),nombre.getText(),apellidos.getText(),correo.getText(),telefono.getText(),direccion.getText(),Codigo_postal.getText());
-        cd.insert(client);
+    	if (dni.getText().matches("^[0-9]{7,8}[A-Z]$")) {
+    		Cliente client = new Cliente(dni.getText(),nombre.getText(),apellidos.getText(),correo.getText(),telefono.getText(),direccion.getText(),Codigo_postal.getText());
+            cd.insert(client);
+            AlertAdd();
+    	} else {
+    		AlertError();
     	}
+    	
+    	}
+    
+    private void AlertAdd() throws IOException {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("INFORMACION");
+        alert.setHeaderText("CLIENTE AÑADIDO");
+        alert.setContentText("El cliente se ha añadido correctamente");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    private void AlertError() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL AÑADIR EL CLIENTE");
+        alert.setContentText("Los datos introducidos del cliente no son correctos");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
     }

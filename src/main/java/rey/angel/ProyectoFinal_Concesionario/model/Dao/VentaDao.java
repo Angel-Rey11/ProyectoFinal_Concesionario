@@ -106,7 +106,7 @@ public class VentaDao implements IVenta<Venta, Coche>{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return v;
 	}
 
 }

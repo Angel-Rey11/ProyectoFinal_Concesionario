@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import rey.angel.ProyectoFinal_Concesionario.ErrorModController;
 import rey.angel.ProyectoFinal_Concesionario.Interfaces.IDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 import rey.angel.ProyectoFinal_Concesionario.utils.Connect;
@@ -109,6 +108,22 @@ public class CocheDao implements IDao<Coche, String>{
 			result=true;
 		} catch (SQLException e) {
 			result=false;
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public boolean delete(Coche ob) {
+		boolean result = true;
+		String sql = "DELETE FROM coche WHERE Matricula=?";
+		try {
+			PreparedStatement sentencia = miConexion.prepareStatement(sql);
+			sentencia.setString(1, ob.getMatricula());
+			sentencia.executeUpdate();
+			result=true;
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		

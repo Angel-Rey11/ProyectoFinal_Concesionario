@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import rey.angel.ProyectoFinal_Concesionario.ErrorModController;
 import rey.angel.ProyectoFinal_Concesionario.Interfaces.IDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 import rey.angel.ProyectoFinal_Concesionario.utils.Connect;
@@ -53,7 +52,7 @@ public class ClienteDao implements IDao<Cliente,String>{
 			PreparedStatement sentencia = miConexion.prepareStatement(sql);
 			sentencia.setString(1, id);
 			ResultSet rs = sentencia.executeQuery();
-			if (rs.next()) {
+			rs.next();
 				c = new Cliente();
 				c.setId(rs.getInt(1));
 				c.setDni(rs.getString(2));
@@ -63,13 +62,6 @@ public class ClienteDao implements IDao<Cliente,String>{
 				c.setTelefono(rs.getString(6));
 				c.setDireccion(rs.getString(7));
 				c.setCodigo_postal(rs.getString(8));
-			} else {
-				try {
-					new ErrorModController().InitError();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -120,6 +112,23 @@ public class ClienteDao implements IDao<Cliente,String>{
 			result=true;
 		} catch (SQLException e) {
 			result=false;
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+
+	@Override
+	public boolean delete(Cliente ob) {
+		boolean result = false;
+		String sql = "DELETE FROM cliente WHERE DNI=?";
+		try {
+			PreparedStatement sentencia = miConexion.prepareStatement(sql);
+			sentencia.setString(1, ob.getDni());
+			sentencia.executeUpdate();
+			result=true;
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		

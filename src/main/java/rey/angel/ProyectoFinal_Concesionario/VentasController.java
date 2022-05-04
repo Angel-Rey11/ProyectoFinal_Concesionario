@@ -85,6 +85,18 @@ public class VentasController {
 	}
 	
 	@FXML
+	private void saveModify() throws IOException {
+		java.sql.Date data = java.sql.Date.valueOf(date.getValue()); 
+		Cliente cli = (Cliente) cliente.getValue();
+		Coche co = (Coche) coche.getValue();
+		Venta v = new Venta(data,cli,co);
+		vd.update(v);
+		date.getEditor().clear();
+		cliente.getSelectionModel().clearSelection();
+		coche.getSelectionModel().clearSelection();
+	}
+	
+	@FXML
 	private void switchToInicio() throws IOException {
 		App.setRoot("Inicio");
 	}

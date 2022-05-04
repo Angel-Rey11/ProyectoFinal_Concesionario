@@ -148,4 +148,9 @@ public class InicioController {
     private void switchToModClient() throws IOException {
         App.setRoot("ModificaCliente");
     }
+    
+    @FXML
+    private void switchToDelete() throws IOException {
+        App.setRoot("Delete");
+    }
 }
