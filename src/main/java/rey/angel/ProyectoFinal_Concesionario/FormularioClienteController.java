@@ -58,6 +58,13 @@ public class FormularioClienteController {
     	if (dni.getText().matches("^[0-9]{7,8}[A-Z]$")) {
     		Cliente client = new Cliente(dni.getText(),nombre.getText(),apellidos.getText(),correo.getText(),telefono.getText(),direccion.getText(),Codigo_postal.getText());
             cd.insert(client);
+            dni.clear();
+            nombre.clear();
+            apellidos.clear();
+            correo.clear();
+            telefono.clear();
+            direccion.clear();
+            Codigo_postal.clear();
             AlertAdd();
     	} else {
     		AlertError();
@@ -79,7 +86,7 @@ public class FormularioClienteController {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("ERROR AL AÑADIR EL CLIENTE");
-        alert.setContentText("Los datos introducidos del cliente no son correctos");
+        alert.setContentText("Los datos introducidos del cliente no son correctos o ya existe el cliente");
         alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();

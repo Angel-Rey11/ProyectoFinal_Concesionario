@@ -3,8 +3,11 @@ package rey.angel.ProyectoFinal_Concesionario;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
@@ -59,13 +62,64 @@ public class DeleteController {
 	
 	@FXML
 	private void delCliente() throws IOException {
-		Cliente c = cd.get(delCliente.getText());
-		cd.delete(c);
+		try {
+			Cliente c = cd.get(delCliente.getText());
+			cd.delete(c);
+			AlertDelCli();
+		} catch (Exception e) {
+			AlertErrorDelCli();
+		}
 	}
 	
 	@FXML
 	private void delCoche() throws IOException {
-		Coche co = cod.get(delCoche.getText());
-		cod.delete(co);
+		try {
+			Coche co = cod.get(delCoche.getText());
+			cod.delete(co);
+			AlertDelCar();
+		} catch (Exception e) {
+			AlertErrorDelCar();
+		}
+		
 	}
+	
+	 private void AlertDelCli() throws IOException {
+	    	Alert alert = new Alert(AlertType.INFORMATION);
+	        alert.setTitle("INFORMACION");
+	        alert.setHeaderText("CLIENTE ELIMINADO");
+	        alert.setContentText("El cliente se ha eliminado correctamente");
+	        alert.show();
+	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+	        s.toFront();
+	    }
+	    
+	    private void AlertErrorDelCli() throws IOException {
+	    	Alert alert = new Alert(AlertType.ERROR);
+	        alert.setTitle("ERROR");
+	        alert.setHeaderText("ERROR AL ELIMINAR EL CLIENTE");
+	        alert.setContentText("No se ha podido eliminar el cliente");
+	        alert.show();
+	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+	        s.toFront();
+	    }
+	    
+	    private void AlertDelCar() throws IOException {
+	    	Alert alert = new Alert(AlertType.INFORMATION);
+	        alert.setTitle("INFORMACION");
+	        alert.setHeaderText("VEHICULO ELIMINADO");
+	        alert.setContentText("El vehiculo se ha eliminado correctamente");
+	        alert.show();
+	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+	        s.toFront();
+	    }
+	    
+	    private void AlertErrorDelCar() throws IOException {
+	    	Alert alert = new Alert(AlertType.ERROR);
+	        alert.setTitle("ERROR");
+	        alert.setHeaderText("ERROR AL ELIMINAR EL VEHICULO");
+	        alert.setContentText("No se ha podido eliminar el vehiculo");
+	        alert.show();
+	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+	        s.toFront();
+	    }
 }

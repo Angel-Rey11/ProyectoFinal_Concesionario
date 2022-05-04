@@ -7,11 +7,14 @@ import java.time.format.FormatStyle;
 import java.util.List;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import javafx.util.converter.LocalDateStringConverter;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
@@ -51,15 +54,19 @@ public class VentasController {
 	
 	@FXML
 	private void SaveAndAdd() throws IOException {
-		java.sql.Date data = java.sql.Date.valueOf(date.getValue()); 
-		Cliente cli = (Cliente) cliente.getValue();
-		Coche co = (Coche) coche.getValue();
-		Venta v = new Venta(data,cli,co);
-		vd.insert(v);
-		date.getEditor().clear();
-		cliente.getSelectionModel().clearSelection();
-		coche.getSelectionModel().clearSelection();
-		
+		try {
+			java.sql.Date data = java.sql.Date.valueOf(date.getValue()); 
+			Cliente cli = (Cliente) cliente.getValue();
+			Coche co = (Coche) coche.getValue();
+			Venta v = new Venta(data,cli,co);
+			vd.insert(v);
+			date.getEditor().clear();
+			cliente.getSelectionModel().clearSelection();
+			coche.getSelectionModel().clearSelection();
+			AlertAdd();
+		} catch (Exception e) {
+			AlertError();
+		}
 	}
 	
 	@FXML
@@ -115,4 +122,24 @@ public class VentasController {
 	private void switchToShowSells() throws IOException {
 		App.setRoot("MostrarVentas");
 	}
+	
+	private void AlertAdd() throws IOException {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("INFORMACION");
+        alert.setHeaderText("VENTA AÑADIDA");
+        alert.setContentText("La venta se ha añadido correctamente");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    private void AlertError() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL AÑADIR LA VENTA");
+        alert.setContentText("Los datos introducidos de la venta no son correctos");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
 }
