@@ -45,5 +45,11 @@ public class Venta {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+	@Override
+	public String toString() {
+		return "Venta [fecha_Compra=" + fecha_Compra + ", cliente=" + cliente + ", coche=" + coche + "]";
+	}
+	
 	
 }

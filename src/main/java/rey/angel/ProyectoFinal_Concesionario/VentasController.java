@@ -83,12 +83,18 @@ public class VentasController {
 	
 	@FXML
 	private void ModifySell() throws IOException {
+		if (modifica.getText().matches("^[0-9]{7,8}[A-Z]$")) {
 		Venta v = vd.get(modifica.getText());
 		date.setValue(v.getFecha_Compra().toLocalDate());
 		cliente.setValue(v.getCliente());
 		coche.setValue(v.getCoche());
 		mod.setVisible(false);
 		bot.setVisible(true);
+		cliente.setDisable(true);
+		coche.setDisable(true);
+	} else {
+		AlertErrorMod();
+	}
 	}
 	
 	@FXML
@@ -101,6 +107,7 @@ public class VentasController {
 		date.getEditor().clear();
 		cliente.getSelectionModel().clearSelection();
 		coche.getSelectionModel().clearSelection();
+		AlertMod();
 	}
 	
 	@FXML
@@ -138,6 +145,26 @@ public class VentasController {
         alert.setTitle("ERROR");
         alert.setHeaderText("ERROR AL AÑADIR LA VENTA");
         alert.setContentText("Los datos introducidos de la venta no son correctos");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    private void AlertErrorMod() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL MODIFICAR LA VENTA");
+        alert.setContentText("Los datos introducidos de la venta no son correctos o no existe");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    private void AlertMod() throws IOException {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("INFORMACIÓN");
+        alert.setHeaderText("SE HA MODIFICADO LA VENTA CORRECTAMENTE");
+        alert.setContentText("Se ha guardado los cambios de la venta correctamente");
         alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();
