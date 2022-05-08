@@ -10,6 +10,7 @@ import java.io.IOException;
 
 /**
  * JavaFX App
+ * Inicia el programa con la pantalla Menu Principal
  */
 public class App extends Application {
 

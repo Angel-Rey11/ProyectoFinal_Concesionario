@@ -50,7 +50,11 @@ public class InicioController {
 	private List<Cliente> misClientes = (List<Cliente>) cd.getAll();
 	private final ObservableList<Cliente> data = FXCollections.observableArrayList(misClientes);
 	
-	
+	/**
+	 * Metodo que se inicializa al entrar a esta pantalla
+	 * Muestra todos los clientes en la tabla y tiene un filtro para poder buscar el cliente por el DNI
+	 * Set de todos los campos correspondientes llamando al getAll del DAO de clientes
+	 */
 	@FXML
 	protected void initialize() {
 		this.configuraTabla();
@@ -74,6 +78,10 @@ public class InicioController {
 		});
 	}
 	
+	/**
+	 * Metodo que configura la tabla para que pueda mostrar la información correcta según los campos
+	 * Hacemos un set de las columnas a los atributos correspondientes del objeto Clientes
+	 */
 	private void configuraTabla() {
 		id.setCellValueFactory(cliente ->{
 			ObservableValue<Integer> ov = new SimpleIntegerProperty().asObject();
@@ -123,32 +131,56 @@ public class InicioController {
 			return ssp;
 		});
 	}
-
+	
+	/**
+	 * Metodo para cambiar a la pantalla del formulario de clientes
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToFormulario() throws IOException {
         App.setRoot("FormularioCliente");
     }
     
+    /**
+	 * Metodo para cambiar a la pantalla de coches
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToCoches() throws IOException {
         App.setRoot("Coches");
     }
     
+    /**
+	 * Metodo para cambiar a la pantalla de ventas
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToVentas() throws IOException {
         App.setRoot("Ventas");
     }
     
+    /**
+	 * Metodo para cambiar a la pantalla del menu principal
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToMenu() throws IOException {
         App.setRoot("MenuPrincipal");
     }
     
+    /**
+	 * Metodo para cambiar a la pantalla de modificar cliente
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToModClient() throws IOException {
         App.setRoot("ModificaCliente");
     }
     
+    /**
+	 * Metodo para cambiar a la pantalla de eliminar cliente o vehiculo
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToDelete() throws IOException {
         App.setRoot("Delete");

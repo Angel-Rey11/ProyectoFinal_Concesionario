@@ -20,7 +20,11 @@ public class ClienteDao implements IDao<Cliente,String>{
 		this.miConexion = Connect.getConnection();
 	}
 
-
+	/**
+	 * Metodo para insertar un cliente en la base de datos
+	 * Le pasamos un cliente con todos sus atributos y lo insertamos
+	 * Devuelve boolean true si ha conseguido insertarlo y false si no ha podido
+	 */
 	@Override
 	public boolean insert(Cliente ob) {
 		boolean result=false;
@@ -43,7 +47,11 @@ public class ClienteDao implements IDao<Cliente,String>{
 		}
 	return result;
 	}
-
+	
+	/**
+	 * Metodo para buscar un cliente segun su DNI, recogemos todos los datos de ese cliente y lo devolvemos
+	 * Cliente que devolvemos con todos sus datos
+	 */
 	@Override
 	public Cliente get(String id) {
 		Cliente c = null;
@@ -67,7 +75,12 @@ public class ClienteDao implements IDao<Cliente,String>{
 		}
 		return c;
 	}
-
+	
+	/**
+	 * Metodo para traer todos los clientes en una coleccion
+	 * Bucle While para ir buscando todos los clientes y traer todos sus datos
+	 * Se devuelve una coleccion con todos los clientes
+	 */
 	@Override
 	public Collection<Cliente> getAll() {
 		Collection<Cliente> result = new ArrayList<Cliente>();
@@ -93,7 +106,12 @@ public class ClienteDao implements IDao<Cliente,String>{
 		}
 		return result;
 	}
-
+	
+	/**
+	 * Metodo para modificar un cliente con todos sus campos menos el DNI y el ID del cliente
+	 * Hace un set de todos sus atributos y se modifica
+	 * Devuelve boolean true si ha podido modificar el cliente y false si no ha podido
+	 */
 	@Override
 	public boolean update(Cliente ob) {
 		boolean result = false;
@@ -118,7 +136,11 @@ public class ClienteDao implements IDao<Cliente,String>{
 		return result;
 	}
 
-
+	
+	/**
+	 * Metodo para borrar el cliente, le pasamos el cliente con su DNI y lo elimina
+	 * Devuelve boolean true si ha podido borrarlo y false si no ha podido
+	 */
 	@Override
 	public boolean delete(Cliente ob) {
 		boolean result = false;

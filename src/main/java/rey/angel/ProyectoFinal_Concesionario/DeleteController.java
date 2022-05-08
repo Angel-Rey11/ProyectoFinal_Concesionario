@@ -8,7 +8,6 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import rey.angel.ProyectoFinal_Concesionario.model.Dao.CarDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
@@ -29,38 +28,68 @@ public class DeleteController {
 	ClienteDao cd = new ClienteDao();
 	CocheDao cod = new CocheDao();
 	
+	/**
+	 * Metodo para cambiar a la pantalla de Inicio
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
 	private void SwitchToInicio() throws IOException {
 		App.setRoot("Inicio");
 	}
 	
+	/**
+	 * Metodo para cambiar a la pantalla de coches
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
 	private void SwitchToCoches() throws IOException {
 		App.setRoot("Coches");
 	}
 	
+	/**
+	 * Metodo para cambiar a la pantalla de ventas
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
 	private void SwitchToVentas() throws IOException {
 		App.setRoot("Ventas");
 	}
 	
+	/**
+	 * Metodo para cambiar a la pantalla de Menu Principal
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
 	private void SwitchToMenuPrincipal() throws IOException {
 		App.setRoot("MenuPrincipal");
 	}
 	
+	/**
+	 * Metodo para mostrar el panel correspondiente y para ocultar el panel donde eliges lo que quieres eliminar
+	 * @throws IOException que lanza si no funciona correctamente
+	 */
 	@FXML
 	private void showDelCliente() throws IOException {
 		mod.setVisible(false);
 		cliente.setVisible(true);
 	}
 	
+	/**
+	 * Metodo para mostrar el panel correspondiente y para ocultar el panel donde eliges lo que quieres eliminar
+	 * @throws IOException que lanza si no funciona correctamente
+	 */
 	@FXML
 	private void showDelCoche() throws IOException {
 		mod.setVisible(false);
 		coche.setVisible(true);
 	}
 	
+	/**
+	 * Metodo para recoger el dato introducido en el campo, buscar ese cliente por su DNI y borrarlo
+	 * Lanza alertas según si ha podido eliminarlo o no
+	 * Le pasamos una expresion regular para controlar lo que se introduce
+	 * @throws IOException que lanza si no funciona correctamente
+	 */
 	@FXML
 	private void delCliente() throws IOException {
 		if (delCliente.getText().matches("^[0-9]{7,8}[A-Z]$")) {
@@ -73,6 +102,12 @@ public class DeleteController {
 			
 	}
 	
+	/**
+	 * Metodo para recoger el dato introducido en el campo, buscar ese cliente por su Matricula y borrarlo
+	 * Lanza alertas según si ha podido eliminarlo o no
+	 * Le pasamos una expresion regular para controlar lo que se introduce
+	 * @throws IOException que lanza si no funciona correctamente
+	 */
 	@FXML
 	private void delCoche() throws IOException {
 		if (delCoche.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
@@ -84,6 +119,10 @@ public class DeleteController {
 		}
 	}
 	
+	/**
+	 * 	Alerta que se muestra si el cliente ha podido ser eliminado
+	 * @throws IOException
+	 */
 	 private void AlertDelCli() throws IOException {
 	    	Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.setTitle("INFORMACION");
@@ -94,6 +133,10 @@ public class DeleteController {
 	        s.toFront();
 	    }
 	    
+	 /**
+	  * Alerta que se muestra si el cliente no ha podido ser eliminado
+	  * @throws IOException
+	  */
 	    private void AlertErrorDelCli() throws IOException {
 	    	Alert alert = new Alert(AlertType.ERROR);
 	        alert.setTitle("ERROR");
@@ -104,6 +147,10 @@ public class DeleteController {
 	        s.toFront();
 	    }
 	    
+	    /**
+	     * Alerta que se muestra si el vehiculo ha podido ser eliminado
+	     * @throws IOException
+	     */
 	    private void AlertDelCar() throws IOException {
 	    	Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.setTitle("INFORMACION");
@@ -114,6 +161,10 @@ public class DeleteController {
 	        s.toFront();
 	    }
 	    
+	    /**
+	     * Alerta que se muestra si el vehiculo no ha podido ser eliminado
+	     * @throws IOException
+	     */
 	    private void AlertErrorDelCar() throws IOException {
 	    	Alert alert = new Alert(AlertType.ERROR);
 	        alert.setTitle("ERROR");

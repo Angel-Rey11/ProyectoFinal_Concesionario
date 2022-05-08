@@ -1,13 +1,10 @@
 package rey.angel.ProyectoFinal_Concesionario;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -16,11 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
-import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.VentaDao;
-import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
-import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Venta;
 
 public class MostrarVentasController {
@@ -48,6 +41,11 @@ public class MostrarVentasController {
 	private List<Venta> misVentas = (List<Venta>) vd.getAll();
 	final ObservableList<Venta> data = FXCollections.observableArrayList(misVentas);
 	
+	/**
+	 * Metodo que se inicializa al entrar a esta pantalla, muestra todas las ventas con sus clientes y 
+	 * coches correspondientes
+	 * Tiene un fitro para poder buscar las ventas por el DNI del cliente o la Matricula del vehiculo
+	 */
 	@FXML
 	private void initialize() {
 		this.ConfiguraTabla();
@@ -74,6 +72,10 @@ public class MostrarVentasController {
 		
 	}
 	
+	/**
+	 * Metodo que configura la tabla para poder añadir los campos a los atributos correspondientes
+	 * Hace un set de la columna con los datos del objeto
+	 */
 	private void ConfiguraTabla() {
 		date.setCellValueFactory(venta -> {
 			SimpleStringProperty ssp = new SimpleStringProperty();
@@ -118,21 +120,37 @@ public class MostrarVentasController {
 		});
 	}
 	
+	/**
+	 * Metodo para cambiar a la pantalla del inicio
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
 	private void switchToInicio() throws IOException {
 		App.setRoot("Inicio");
 	}
 	
+	/**
+	 * Metodo para cambiar a la pantalla de coche
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
 	private void switchToCoche() throws IOException {
 		App.setRoot("Coches");
 	}
 	
+	/**
+	 * Metodo para cambiar a la pantalla de ventas
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
 	private void switchToVentas() throws IOException {
 		App.setRoot("Ventas");
 	}
 	
+	/**
+	 * Metodo para cambiar a la pantalla del Menu Principal
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
 	private void switchToMenuPrincipal() throws IOException {
 		App.setRoot("MenuPrincipal");

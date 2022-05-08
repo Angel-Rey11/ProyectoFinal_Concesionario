@@ -1,6 +1,7 @@
 package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
 import java.sql.Date;
+import java.util.Objects;
 
 
 public class Venta {
@@ -50,6 +51,22 @@ public class Venta {
 	public String toString() {
 		return "Venta [fecha_Compra=" + fecha_Compra + ", cliente=" + cliente + ", coche=" + coche + "]";
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cliente);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Venta other = (Venta) obj;
+		return Objects.equals(cliente, other.cliente);
+	}
 	
 }

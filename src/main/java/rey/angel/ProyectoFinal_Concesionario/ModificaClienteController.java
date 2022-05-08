@@ -34,6 +34,13 @@ public class ModificaClienteController {
 	@FXML
 	private TextField modifica;
 	
+	/**
+	 * Metodo del panel de dialogo que al introducir el dni del cliente te recoge el DNI, te busca ese cliente
+	 * y hace un set de todos los campos a los TextField correspondientes
+	 * Oculta el panel de dialogo
+	 * Muestra alerta si no ha podido encontrar el cliente o el DNI no cumple la condicion
+	 * @throws IOException
+	 */
 	@FXML
 	private void modifyClient() throws IOException {
 		if (modifica.getText().matches("^[0-9]{7,8}[A-Z]$")) {
@@ -52,6 +59,12 @@ public class ModificaClienteController {
 		
 	}
 	
+	/**
+	 * Metodo que recoge todos los campos del TextField, ya estén modificados o no
+	 * Crea un cliente nuevo con esos campos y modifica ese cliente
+	 * Muestra alertas si se ha podido modificar el cliente o no
+	 * @throws IOException
+	 */
 	@FXML
 	private void saveChanges() throws IOException {
 		try {
@@ -64,16 +77,37 @@ public class ModificaClienteController {
 			
 	}
 	
+	/**
+	 * Metodo para cambiar a la pantalla de coches
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
     private void switchToCoches() throws IOException {
         App.setRoot("Coches");
     }
 	
+	/**
+	 * Metodo para cambiar a la pantalla del inicio
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
     private void switchToInicio() throws IOException {
         App.setRoot("Inicio");
     }
 	
+	/**
+	 * Metodo para cambiar a la pantalla del inicio
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+	@FXML
+    private void switchToVentas() throws IOException {
+        App.setRoot("Ventas");
+    }
+	
+	/**
+	 * Alerta que se muestra si se ha podido modificar el cliente
+	 * @throws IOException
+	 */
 	private void AlertMod() throws IOException {
     	Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("INFORMACION");
@@ -84,6 +118,10 @@ public class ModificaClienteController {
         s.toFront();
     }
     
+	/**
+	 * Alerta que se muestra si no encuentra el Cliente o el DNI introducido es incorrecto
+	 * @throws IOException
+	 */
     private void AlertError() throws IOException {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
@@ -94,6 +132,10 @@ public class ModificaClienteController {
         s.toFront();
     }
     
+    /**
+     * Alerta que se muestra si no se ha podido modificar los cambios del cliente
+     * @throws IOException
+     */
     private void AlertErrorMod() throws IOException {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");

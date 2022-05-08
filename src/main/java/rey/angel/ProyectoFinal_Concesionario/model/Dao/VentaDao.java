@@ -27,6 +27,11 @@ public class VentaDao implements IVenta<Venta, Coche>{
 	ClienteDao cd = new ClienteDao();
 	CocheDao cod = new CocheDao();
 
+	/**
+	 * Metodo para insertar una venta en la base de datos
+	 * Le pasamos una venta con todos sus atributos, cliente y coche y lo insertamos
+	 * Devuelve boolean true si ha conseguido insertarla y false si no ha podido
+	 */
 	@Override
 	public boolean insert(Venta ob) {
 		boolean result = false;
@@ -45,6 +50,11 @@ public class VentaDao implements IVenta<Venta, Coche>{
 		return result;
 	}
 	
+	/**
+	 * Metodo para traer todos las ventas en una coleccion con los clientes y coches asociadas
+	 * Bucle While para ir buscando todos las ventas y traer todos sus datos
+	 * Se devuelve una coleccion con todos las ventas
+	 */
 	@Override
 	public Collection<Venta> getAll() {
 		Collection<Venta> result = new ArrayList<Venta>();
@@ -68,6 +78,11 @@ public class VentaDao implements IVenta<Venta, Coche>{
 		return result;
 	}
 
+	/**
+	 * Metodo para modificar una venta con todos sus campos menos el Cliente y el Coche
+	 * Hace un set de todos sus atributos y se modifica
+	 * Devuelve boolean true si ha podido modificar la venta y false si no ha podido
+	 */
 	@Override
 	public boolean update(Venta ob) {
 		boolean result = false;
@@ -87,6 +102,11 @@ public class VentaDao implements IVenta<Venta, Coche>{
 		return result;
 	}
 
+	/**
+	 * Metodo para buscar una venta segun su DNI de ese cliente asociado, recogemos todos los datos de esa
+	 * venta y lo devolvemos
+	 * Venta que devolvemos con todos sus datos
+	 */
 	@Override
 	public Venta get(String id) {
 		Venta v = null;

@@ -32,6 +32,10 @@ public class Connect {
 		}
 	}
 	
+	/**
+	 * Metodo del patron singleton para instanciar la conexion
+	 * @return devuelve la conexion creada
+	 */
 	public static Connection getConnection() {
 		if(_newInstance == null) {
 			_newInstance = new Connect();
@@ -39,7 +43,10 @@ public class Connect {
 		return con;
 	}
 	
-	
+	/**
+	 * Metodo que carga los datos de la conexion con el fichero xml
+	 * @return los datos de la conexion
+	 */
 	public DatosConexion load() {
 		DatosConexion con = new DatosConexion();
 		JAXBContext contexto;

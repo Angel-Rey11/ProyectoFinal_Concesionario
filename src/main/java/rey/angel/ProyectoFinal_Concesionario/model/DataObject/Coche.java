@@ -1,5 +1,7 @@
 package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
+import java.util.Objects;
+
 public class Coche {
 	private String matricula;
 	private String marca;
@@ -84,6 +86,20 @@ public class Coche {
 		return "Coche ->" + "Matricula=" + matricula + ", Marca=" + marca + ", Modelo=" + modelo + ", Año=" + ano + ", Color="
 				+ color + ", Kilometros=" + kilometros + ", Precio=" + precio;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Coche other = (Coche) obj;
+		return Objects.equals(matricula, other.matricula);
+	}
+	
+	
 	
 	
 

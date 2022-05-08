@@ -1,5 +1,6 @@
 package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
+import java.util.Objects;
 
 public class Cliente {
 	private int id;
@@ -109,7 +110,23 @@ public class Cliente {
 		return "Cliente ->" + "DNI =" + dni + ", Nombre=" + nombre + ", Apellidos=" + apellidos + ", Correo="
 				+ correo + ", Telefono=" + telefono + ", Direccion=" + direccion + ", Codigo Postal=" + codigo_postal;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(dni, other.dni);
+	}
 	
 	
 	

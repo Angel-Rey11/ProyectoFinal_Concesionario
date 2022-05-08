@@ -34,6 +34,13 @@ public class ModificaCocheController {
 	@FXML
 	private TextField modifica;
 	
+	/**
+	 * Metodo que recoge el texfField si cumple la condicion, busca el coche 
+	 * y hace un set de todos los campos en los TextField correspondientes
+	 * Oculta el panel de dialogo
+	 * Muestra alertas si no ha podido encontrar el coche o el formato de la matricula no es correcta
+	 * @throws IOException
+	 */
 	@FXML
 	private void ModifyCar() throws IOException {
 		if (modifica.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
@@ -52,6 +59,11 @@ public class ModificaCocheController {
 			
 	}
 	
+	/**
+	 * Metodo para modificar el coche, crea un nuevo coche con los datos de los TextField y modifica el coche
+	 * Muestra alertas si se ha podido modificar o no el coche
+	 * @throws IOException
+	 */
 	@FXML
 	private void SaveChanges() throws IOException {
 		try {
@@ -64,16 +76,37 @@ public class ModificaCocheController {
 		
 	}
 	
+	/**
+	 * Metodo para cambiar a la pantalla de coches
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
     private void switchToCoches() throws IOException {
         App.setRoot("Coches");
     }
 	
+	/**
+	 * Metodo para cambiar a la pantalla del inicio
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
 	@FXML
     private void switchToInicio() throws IOException {
         App.setRoot("Inicio");
     }
 	
+	/**
+	 * Metodo para cambiar a la pantalla del inicio
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+	@FXML
+    private void switchToVentas() throws IOException {
+        App.setRoot("Ventas");
+    }
+	
+	/**
+	 * Alerta que se muestra si ha podido modificar el coche
+	 * @throws IOException
+	 */
 	private void AlertMod() throws IOException {
     	Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("INFORMACION");
@@ -84,6 +117,10 @@ public class ModificaCocheController {
         s.toFront();
     }
     
+	/**
+	 * Alerta que se muestra si no ha encontrado el coche o la matricula no cumple el formato
+	 * @throws IOException
+	 */
     private void AlertError() throws IOException {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
@@ -94,6 +131,10 @@ public class ModificaCocheController {
         s.toFront();
     }
     
+    /**
+     * Alerta que se muestra si no se ha podido modificar los cambios
+     * @throws IOException
+     */
     private void AlertErrorMod() throws IOException {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");

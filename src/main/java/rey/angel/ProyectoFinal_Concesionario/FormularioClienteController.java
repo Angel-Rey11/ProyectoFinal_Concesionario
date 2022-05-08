@@ -32,27 +32,49 @@ public class FormularioClienteController {
 	
 	ClienteDao cd = new ClienteDao();
 	
-
+	/**
+	 * Metodo para cambiar a la pantalla del inicio
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToInicio() throws IOException {
         App.setRoot("Inicio");
     }
     
+    /**
+	 * Metodo para cambiar a la pantalla de coches
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToCoches() throws IOException {
         App.setRoot("Coches");
     }
     
+    /**
+	 * Metodo para cambiar a la pantalla de ventas
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToVentas() throws IOException {
     	App.setRoot("Ventas");
     }
     
+    /**
+	 * Metodo para cambiar a la pantalla del menu principal
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
     @FXML
     private void switchToMenuPrincipal() throws IOException {
     	App.setRoot("MenuPrincipal");
     }
     
+    /**
+     * Metodo que cuando pulsas un botón te recoge el dato del campo clave primaria si cumple esa condicion
+     * Recoge todos los campos creando un cliente nuevo con esos datos y lo añade a la base de datos
+     * Te limpia todos los textField después de añadirlo
+     * Muestra alertas si ha podido añadirlo o no
+     * @throws IOException
+     */
     @FXML
     private void AddClient() throws IOException {
     	if (dni.getText().matches("^[0-9]{7,8}[A-Z]$")) {
@@ -72,6 +94,10 @@ public class FormularioClienteController {
     	
     	}
     
+    /**
+     * Alerta que se muestra si se ha podido añadir el cliente correctamente
+     * @throws IOException
+     */
     private void AlertAdd() throws IOException {
     	Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("INFORMACION");
@@ -82,6 +108,10 @@ public class FormularioClienteController {
         s.toFront();
     }
     
+    /**
+     * Alerta que se muestra si no se ha podido añadir el cliente
+     * @throws IOException
+     */
     private void AlertError() throws IOException {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
