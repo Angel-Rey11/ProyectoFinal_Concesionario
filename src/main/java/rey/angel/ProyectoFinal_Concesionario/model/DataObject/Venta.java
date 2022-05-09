@@ -3,8 +3,10 @@ package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 import java.sql.Date;
 import java.util.Objects;
 
+import rey.angel.ProyectoFinal_Concesionario.Interfaces.IVenta;
 
-public class Venta {
+
+public class Venta implements IVenta{
 	private Date fecha_Compra;
 	private Cliente cliente;
 	private Coche coche;
@@ -54,7 +56,7 @@ public class Venta {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cliente);
+		return Objects.hash(coche);
 	}
 
 	@Override
@@ -66,7 +68,9 @@ public class Venta {
 		if (getClass() != obj.getClass())
 			return false;
 		Venta other = (Venta) obj;
-		return Objects.equals(cliente, other.cliente);
+		return Objects.equals(coche, other.coche);
 	}
+
+	
 	
 }

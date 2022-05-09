@@ -2,7 +2,9 @@ package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
 import java.util.Objects;
 
-public class Coche {
+import rey.angel.ProyectoFinal_Concesionario.Interfaces.ICoche;
+
+public class Coche implements ICoche{
 	private String matricula;
 	private String marca;
 	private String modelo;

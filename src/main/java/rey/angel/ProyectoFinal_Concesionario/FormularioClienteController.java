@@ -117,7 +117,7 @@ public class FormularioClienteController {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("ERROR AL AÑADIR EL CLIENTE");
-        alert.setContentText("Los datos introducidos del cliente no son correctos o ya existe el cliente");
+        alert.setContentText("Los datos introducidos del cliente no son correctos o ya existe");
         alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();

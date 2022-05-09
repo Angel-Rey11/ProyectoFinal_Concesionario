@@ -1,21 +1,18 @@
 package rey.angel.ProyectoFinal_Concesionario.Interfaces;
 
-import java.util.Collection;
+import java.sql.Date;
 
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 
-/**
- * Interfaz paa la venta 
- * Crud basico de insertar, buscar, buscar todos y modificar la venta
- * @author Angel
- *
- * @param <T> objeto
- * @param <K> clave de ese objeto
- */
-public interface IVenta<T,K> {
-	boolean insert (T ob);
-	T get (String id);
-	Collection <T> getAll();
-	boolean update (T ob);
+public interface IVenta {
+	Date getFecha_Compra();
+	Cliente getCliente();
+	Coche getCoche();
+	void setFecha_Compra(Date fecha_Compra);
+	void setCliente(Cliente cliente);
+	void setCoche(Coche coche);
+	boolean equals(Object o);
+	String toString();
+	int hashCode();
 }

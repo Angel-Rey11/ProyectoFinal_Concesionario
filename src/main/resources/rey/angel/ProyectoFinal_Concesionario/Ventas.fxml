@@ -151,8 +151,8 @@
                            <children>
                               <Label layoutX="124.0" layoutY="20.0" style="-fx-font-size: 20; -fx-font-family: elephant;" text="MODIFICAR VENTA" />
                               <Separator layoutY="55.0" prefHeight="3.0" prefWidth="480.0" style="-fx-background-color: black;" />
-                              <Label layoutX="53.0" layoutY="76.0" style="-fx-font-family: elephant; -fx-background-size: 16;" text="Para modificar, por favor, introduzca el DNI del Cliente." />
-                              <Label layoutX="53.0" layoutY="128.0" style="-fx-font-family: elephant;" text="DNI del Cliente:" />
+                              <Label layoutX="32.0" layoutY="76.0" style="-fx-font-family: elephant; -fx-background-size: 16;" text="Para modificar, por favor, introduzca la Matrícula del Vehículo." />
+                              <Label layoutX="14.0" layoutY="137.0" style="-fx-font-family: elephant;" text="Matrícula del Vehículo:" />
                               <TextField fx:id="modifica" layoutX="177.0" layoutY="124.0" prefHeight="25.0" prefWidth="194.0" />
                               <Button layoutX="76.0" layoutY="204.0" mnemonicParsing="false" onAction="#ModifySell" prefHeight="33.0" prefWidth="131.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-background-radius: 40px;" text="Continuar" textFill="WHITE">
                                  <graphic>

@@ -112,7 +112,7 @@ public class VentasController {
 	 */
 	@FXML
 	private void ModifySell() throws IOException {
-		if (modifica.getText().matches("^[0-9]{7,8}[A-Z]$")) {
+		if (modifica.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
 		Venta v = vd.get(modifica.getText());
 		date.setValue(v.getFecha_Compra().toLocalDate());
 		cliente.setValue(v.getCliente());

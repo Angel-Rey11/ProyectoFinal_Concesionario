@@ -128,9 +128,10 @@ public class DeleteController {
 	        alert.setTitle("INFORMACION");
 	        alert.setHeaderText("CLIENTE ELIMINADO");
 	        alert.setContentText("El cliente se ha eliminado correctamente");
-	        alert.show();
 	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
 	        s.toFront();
+	        alert.showAndWait();
+	        App.setRoot("Inicio");
 	    }
 	    
 	 /**
@@ -156,9 +157,10 @@ public class DeleteController {
 	        alert.setTitle("INFORMACION");
 	        alert.setHeaderText("VEHICULO ELIMINADO");
 	        alert.setContentText("El vehiculo se ha eliminado correctamente");
-	        alert.show();
 	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
 	        s.toFront();
+	        alert.showAndWait();
+	        App.setRoot("Inicio");
 	    }
 	    
 	    /**

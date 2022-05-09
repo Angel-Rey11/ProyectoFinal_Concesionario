@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import rey.angel.ProyectoFinal_Concesionario.Interfaces.IDao;
-import rey.angel.ProyectoFinal_Concesionario.Interfaces.IVenta;
+import rey.angel.ProyectoFinal_Concesionario.Interfaces.IVentaDAO;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Venta;
 import rey.angel.ProyectoFinal_Concesionario.utils.Connect;
 
-public class VentaDao implements IVenta<Venta, Coche>{
+public class VentaDao implements IVentaDAO<Venta, Coche>{
 	private Connection miConexion;
 	
 	public VentaDao() {
@@ -86,11 +86,11 @@ public class VentaDao implements IVenta<Venta, Coche>{
 	@Override
 	public boolean update(Venta ob) {
 		boolean result = false;
-		String sql = "UPDATE venta SET Fecha_Compra=? WHERE DNI=?";
+		String sql = "UPDATE venta SET Fecha_Compra=? WHERE Matricula=?";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(sql);
-			Cliente c = cd.get(ob.getCliente().getDni()); 
-			sentencia.setString(2, c.getDni());
+			Coche c = cod.get(ob.getCoche().getMatricula()); 
+			sentencia.setString(2, c.getMatricula());
 			sentencia.setDate(1, ob.getFecha_Compra());
 			sentencia.executeUpdate();
 			result=true;
@@ -110,7 +110,7 @@ public class VentaDao implements IVenta<Venta, Coche>{
 	@Override
 	public Venta get(String id) {
 		Venta v = null;
-		String sql = "SELECT Fecha_Compra,DNI,Matricula FROM venta WHERE DNI=?";
+		String sql = "SELECT Fecha_Compra,DNI,Matricula FROM venta WHERE Matricula=?";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(sql);
 			sentencia.setString(1, id);

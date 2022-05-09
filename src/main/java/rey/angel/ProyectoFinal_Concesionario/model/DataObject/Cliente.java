@@ -2,7 +2,9 @@ package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
 import java.util.Objects;
 
-public class Cliente {
+import rey.angel.ProyectoFinal_Concesionario.Interfaces.IClient;
+
+public class Cliente implements IClient{
 	private int id;
 	private String dni;
 	private String nombre;
