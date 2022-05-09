@@ -99,9 +99,10 @@ public class FormularioCochesController {
 	        alert.setTitle("INFORMACION");
 	        alert.setHeaderText("VEHICULO AÑADIDO");
 	        alert.setContentText("El vehiculo se ha añadido correctamente");
-	        alert.show();
 	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
 	        s.toFront();
+	        alert.showAndWait();
+	        App.setRoot("Coches");
 	    }
 	 
 	 /**

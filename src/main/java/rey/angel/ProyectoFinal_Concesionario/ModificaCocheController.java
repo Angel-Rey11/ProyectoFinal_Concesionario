@@ -112,9 +112,10 @@ public class ModificaCocheController {
         alert.setTitle("INFORMACION");
         alert.setHeaderText("CAMBIOS GUARDADOS");
         alert.setContentText("El vehiculo se ha modificado correctamente");
-        alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();
+        alert.showAndWait();
+        App.setRoot("Coches");
     }
     
 	/**

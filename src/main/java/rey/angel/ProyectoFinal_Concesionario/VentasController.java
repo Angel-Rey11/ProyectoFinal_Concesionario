@@ -49,10 +49,16 @@ public class VentasController {
 	 */
 	@FXML
 	private void addSell() throws IOException {
-		List<Cliente> misClientes = (List<Cliente>) cd.getAll();
-		List<Coche> misCoches = (List<Coche>) cod.getAll();
-		cliente.getItems().addAll(misClientes);
-		coche.getItems().addAll(misCoches);
+		try {
+			List<Cliente> misClientes = (List<Cliente>) cd.getAll();
+			List<Coche> misCoches = (List<Coche>) cod.getAll();
+			cliente.getItems().addAll(misClientes);
+			coche.getItems().addAll(misCoches);
+			AlertLoad();
+		} catch(Exception e) {
+			AlertErrorLoad();
+		}
+		
 	}
 	
 	/**
@@ -134,6 +140,13 @@ public class VentasController {
 		Coche co = (Coche) coche.getValue();
 		Venta v = new Venta(data,cli,co);
 		vd.update(v);
+		date.getEditor().clear();
+		cliente.getSelectionModel().clearSelection();
+		coche.getSelectionModel().clearSelection();
+		bot2.setVisible(true);
+		bot.setVisible(false);
+		cliente.setDisable(false);
+		coche.setDisable(false);
 		date.getEditor().clear();
 		cliente.getSelectionModel().clearSelection();
 		coche.getSelectionModel().clearSelection();
@@ -227,6 +240,34 @@ public class VentasController {
         alert.setTitle("INFORMACIÓN");
         alert.setHeaderText("SE HA MODIFICADO LA VENTA CORRECTAMENTE");
         alert.setContentText("Se ha guardado los cambios de la venta correctamente");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    /**
+     * Alerta que se muestra si se ha podido cargar los datos
+     * @throws IOException
+     */
+    private void AlertLoad() throws IOException {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("INFORMACIÓN");
+        alert.setHeaderText("SE HAN CARGADO LOS DATOS CORRECTAMENTE");
+        alert.setContentText("Se han cargado los datos correctamente");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    /**
+     * Alerta que se muestra si no se cargan los datos correctamente
+     * @throws IOException
+     */
+    private void AlertErrorLoad() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL CARGAR LOS DATOS");
+        alert.setContentText("Los datos no se han podido cargar correctamente");
         alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();

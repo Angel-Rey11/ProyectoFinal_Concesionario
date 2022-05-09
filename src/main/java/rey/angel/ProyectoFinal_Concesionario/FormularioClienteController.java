@@ -103,9 +103,10 @@ public class FormularioClienteController {
         alert.setTitle("INFORMACION");
         alert.setHeaderText("CLIENTE AÑADIDO");
         alert.setContentText("El cliente se ha añadido correctamente");
-        alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();
+        alert.showAndWait();
+        App.setRoot("Inicio");
     }
     
     /**
