@@ -24,7 +24,6 @@ import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Venta;
 public class VentasController {
 	
 	ClienteDao cd = new ClienteDao();
-	CocheDao cod = new CocheDao();
 	VentaDao vd = new VentaDao();
 	
 	@FXML
@@ -51,7 +50,7 @@ public class VentasController {
 	private void addSell() throws IOException {
 		try {
 			List<Cliente> misClientes = (List<Cliente>) cd.getAll();
-			List<Coche> misCoches = (List<Coche>) cod.getAll();
+			List<Coche> misCoches = (List<Coche>) CocheDao.getAll();
 			cliente.getItems().addAll(misClientes);
 			coche.getItems().addAll(misCoches);
 			AlertLoad();

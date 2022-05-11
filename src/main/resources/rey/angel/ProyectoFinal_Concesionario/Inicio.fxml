@@ -157,7 +157,7 @@
       </VBox>
       <ExpansionPanel layoutX="215.0" layoutY="22.0" prefHeight="94.0" prefWidth="685.0" style="-fx-background-color: #053CC8;" />
       <Label layoutX="253.0" layoutY="48.0" prefHeight="41.0" prefWidth="193.0" style="-fx-font-family: elephant; -fx-border-color: white; -fx-font-size: 30;" text="CLIENTES" textFill="#f2f2f2" />
-      <Button layoutX="536.0" layoutY="46.0" mnemonicParsing="false" onAction="#switchToDelete" style="-fx-background-color: transparent; -fx-font-size: 20; -fx-font-family: elephant; -fx-border-color: white; -fx-border-radius: 40px;" text="ELIMINAR Cliente/Vehículo" textFill="WHITE">
+      <Button layoutX="585.0" layoutY="47.0" mnemonicParsing="false" onAction="#switchToDelete" style="-fx-background-color: transparent; -fx-font-size: 20; -fx-font-family: elephant; -fx-border-color: white; -fx-border-radius: 40px;" text="ELIMINAR CLIENTE" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>

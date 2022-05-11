@@ -178,7 +178,7 @@ public class InicioController {
     }
     
     /**
-	 * Metodo para cambiar a la pantalla de eliminar cliente o vehiculo
+	 * Metodo para cambiar a la pantalla de eliminar cliente
 	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
 	 */
     @FXML

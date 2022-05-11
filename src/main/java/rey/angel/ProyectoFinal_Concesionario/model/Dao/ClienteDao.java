@@ -60,7 +60,7 @@ public class ClienteDao implements IDao<Cliente,String>{
 			PreparedStatement sentencia = miConexion.prepareStatement(sql);
 			sentencia.setString(1, id);
 			ResultSet rs = sentencia.executeQuery();
-			rs.next();
+			if(rs.next()) {
 				c = new Cliente();
 				c.setId(rs.getInt(1));
 				c.setDni(rs.getString(2));
@@ -70,6 +70,7 @@ public class ClienteDao implements IDao<Cliente,String>{
 				c.setTelefono(rs.getString(6));
 				c.setDireccion(rs.getString(7));
 				c.setCodigo_postal(rs.getString(8));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

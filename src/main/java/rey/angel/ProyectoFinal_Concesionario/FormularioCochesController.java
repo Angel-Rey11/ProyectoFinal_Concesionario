@@ -7,10 +7,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import rey.angel.ProyectoFinal_Concesionario.model.Dao.CarDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Car;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 
 public class FormularioCochesController {
+	
+	CarDao cd = new CarDao();
 	
 	@FXML
 	private TextField Matricula;
@@ -26,8 +30,6 @@ public class FormularioCochesController {
 	private TextField Kilometros;
 	@FXML
 	private TextField Precio;
-	
-	CocheDao cd = new CocheDao();
 	
 	/**
 	 * Metodo para cambiar a la pantalla del inicio
@@ -74,17 +76,21 @@ public class FormularioCochesController {
 	 */
 	@FXML
 	private void AddCar() throws IOException {
-		if (Matricula.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
-			Coche car = new Coche(Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kilometros.getText(),Precio.getText());
-			cd.insert(car);
-			AlertAdd();
-			Matricula.clear();
-			Marca.clear();
-			Modelo.clear();
-			Ano.clear();
-			Color.clear();
-			Kilometros.clear();
-			Precio.clear();
+		Coche c = CocheDao.get(Matricula.getText());
+		if (c==null) {
+			if (Matricula.getText().matches("^[0-9]{4}-[A-Z]{3}$") && Ano.getText().matches("[0-9]{4}") && 
+					Kilometros.getText().matches("[0-9]+") && Precio.getText().matches("[0-9]+")) {
+				Car caro = new Car(Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kilometros.getText(),Precio.getText());
+				cd.insert(caro);
+				AlertAdd();
+				Matricula.clear();
+				Marca.clear();
+				Modelo.clear();
+				Ano.clear();
+				Color.clear();
+				Kilometros.clear();
+				Precio.clear();
+			}
 		} else {
 			AlertError();
 		}

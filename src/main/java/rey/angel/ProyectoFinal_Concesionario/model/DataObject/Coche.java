@@ -1,7 +1,5 @@
 package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
-import java.util.Objects;
-
 import rey.angel.ProyectoFinal_Concesionario.Interfaces.ICoche;
 
 public class Coche implements ICoche{
@@ -12,6 +10,7 @@ public class Coche implements ICoche{
 	private String color;
 	private String kilometros;
 	private String precio;
+	private String cilindrada;
 	
 	public Coche() {
 		
@@ -25,6 +24,19 @@ public class Coche implements ICoche{
 		this.color = color;
 		this.kilometros = kilometros;
 		this.precio = precio;
+	}
+	
+	public Coche(String matricula, String marca, String modelo, String ano, String color, String kilometros,
+			String precio, String cilindrada) {
+		super();
+		this.matricula = matricula;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.ano = ano;
+		this.color = color;
+		this.kilometros = kilometros;
+		this.precio = precio;
+		this.cilindrada = cilindrada;
 	}
 
 	public String getMatricula() {
@@ -82,6 +94,14 @@ public class Coche implements ICoche{
 	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
+	
+	public String getCilindrada() {
+		return cilindrada;
+	}
+
+	public void setCilindrada(String cilindrada) {
+		this.cilindrada = cilindrada;
+	}
 
 	@Override
 	public String toString() {
@@ -91,18 +111,21 @@ public class Coche implements ICoche{
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Coche other = (Coche) obj;
-		return Objects.equals(matricula, other.matricula);
+		boolean result = false;
+		
+		if (obj != null) {
+			if (this == obj) {
+				result=true;
+			}else {
+				if (getClass() == obj.getClass()) {
+					Coche tmp = (Coche) obj;
+					if(this.getMatricula().equals(tmp.getMatricula())) {
+						result=true;
+					}
+				}	
+			}
+		}
+		return result;
 	}
-	
-	
-	
-	
 
 }

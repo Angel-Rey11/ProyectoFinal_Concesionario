@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rey.angel.ProyectoFinal_Concesionario.DeleteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rey.angel.ProyectoFinal_Concesionario.DeleteCocheController">
    <children>
       <VBox prefHeight="450.0" prefWidth="215.0" style="-fx-background-color: #053CC8;">
          <padding>
             <Insets top="50.0" />
          </padding>
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#SwitchToInicio" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Clientes" textFill="#fffefe">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Clientes" textFill="#fffefe">
                <VBox.margin>
                   <Insets right="10.0" top="30.0" />
                </VBox.margin>
@@ -33,7 +33,7 @@
                </graphic>
             </Button>
             <Separator prefWidth="200.0" />
-            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#SwitchToCoches" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Vehiculos" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Vehiculos" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
@@ -49,7 +49,7 @@
                </graphic>
             </Button>
             <Separator prefWidth="200.0" />
-            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" onAction="#SwitchToVentas" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Ventas" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Ventas" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
@@ -65,7 +65,7 @@
                </graphic>
             </Button>
             <Separator prefWidth="200.0" />
-            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#SwitchToMenuPrincipal" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
@@ -84,14 +84,14 @@
       </VBox>
       <ExpansionPanel layoutX="215.0" layoutY="22.0" prefHeight="94.0" prefWidth="685.0" style="-fx-background-color: #053CC8;" />
       <Label layoutX="254.0" layoutY="49.0" style="-fx-font-family: elephant; -fx-font-size: 30; -fx-border-color: white;" text="ELIMINAR" textFill="WHITE" />
-      <DialogPane fx:id="cliente" layoutX="224.0" layoutY="144.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="664.0" style="-fx-border-color: #053CC8;">
-          <header>
+      <DialogPane fx:id="coche" layoutX="224.0" layoutY="136.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="664.0" style="-fx-border-color: #053CC8;">
+         <header>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="664.0">
                <children>
-                  <Label layoutX="208.0" layoutY="14.0" style="-fx-font-family: elephant; -fx-font-size: 20;" text="ELIMINAR CLIENTE" />
+                  <Label layoutX="208.0" layoutY="14.0" style="-fx-font-family: elephant; -fx-font-size: 20;" text="ELIMINAR VEHÍCULO" />
                   <Separator layoutY="49.0" prefHeight="3.0" prefWidth="664.0" style="-fx-background-color: #053CC8;" />
-                  <Label layoutX="29.0" layoutY="98.0" style="-fx-font-family: elephant;" text="INTRODUCE EL DNI DEL CLIENTE:" />
-                  <TextField fx:id="delCliente" layoutX="332.0" layoutY="94.0" prefHeight="25.0" prefWidth="205.0" />
+                  <Label layoutX="14.0" layoutY="98.0" style="-fx-font-family: elephant;" text="INTRODUCE LA MATRICULA DEL VEHÍCULO:" />
+                  <TextField fx:id="delCoche" layoutX="390.0" layoutY="94.0" prefHeight="25.0" prefWidth="205.0" />
                   <Button layoutX="435.0" layoutY="178.0" mnemonicParsing="false" onAction="#showConfirmation" style="-fx-background-color: #053CC8; -fx-font-size: 18; -fx-font-family: elephant;" text="ELIMINAR" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
@@ -105,9 +105,9 @@
                       <header>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="141.0" prefWidth="424.0">
                            <children>
-                              <Label layoutX="5.0" layoutY="14.0" style="-fx-font-family: elephant; -fx-font-size: 14;" text="¿SEGURO QUE QUIERES ELIMINAR EL CLIENTE?" />
+                              <Label layoutX="3.0" layoutY="14.0" style="-fx-font-family: elephant; -fx-font-size: 14;" text="¿SEGURO QUE QUIERE ELIMINAR EL VEHÍCULO?" />
                               <Separator layoutY="49.0" prefHeight="3.0" prefWidth="424.0" style="-fx-background-color: #053CC8;" />
-                              <Button layoutX="27.0" layoutY="70.0" mnemonicParsing="false" onAction="#delCliente" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="SÍ" textFill="WHITE">
+                              <Button layoutX="57.0" layoutY="70.0" mnemonicParsing="false" onAction="#delCoche" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="SÍ" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -116,7 +116,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="285.0" layoutY="71.0" mnemonicParsing="false" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="CANCELAR" textFill="WHITE">
+                              <Button layoutX="279.0" layoutY="69.0" mnemonicParsing="false" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="CANCELAR" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="21.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -134,13 +134,13 @@
                   </DialogPane>
                </children>
             </AnchorPane>
-          </header>
-          <content>
+         </header>
+         <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-          </content>
-          <expandableContent>
+         </content>
+         <expandableContent>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-          </expandableContent>
+         </expandableContent>
       </DialogPane>
    </children>
 </AnchorPane>

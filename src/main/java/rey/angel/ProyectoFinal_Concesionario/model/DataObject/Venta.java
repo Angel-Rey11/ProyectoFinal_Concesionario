@@ -2,7 +2,6 @@ package rey.angel.ProyectoFinal_Concesionario.model.DataObject;
 
 import java.sql.Date;
 import java.util.Objects;
-
 import rey.angel.ProyectoFinal_Concesionario.Interfaces.IVenta;
 
 
@@ -61,14 +60,21 @@ public class Venta implements IVenta{
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Venta other = (Venta) obj;
-		return Objects.equals(coche, other.coche);
+		boolean result = false;
+		
+		if (obj != null) {
+			if (this == obj) {
+				result=true;
+			}else {
+				if (getClass() == obj.getClass()) {
+					Venta tmp = (Venta) obj;
+					if(this.getCoche().equals(tmp.getCoche())) {
+						result=true;
+					}
+				}	
+			}
+		}
+		return result;
 	}
 
 	

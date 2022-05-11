@@ -102,12 +102,13 @@
                   <TableView fx:id="tab" onSort="#initialize" prefHeight="271.0" prefWidth="685.0" GridPane.rowIndex="1">
                     <columns>
                       <TableColumn fx:id="Matricula" prefWidth="82.66665649414062" text="Matrícula" />
-                      <TableColumn fx:id="Marca" prefWidth="98.0" text="Marca" />
-                        <TableColumn fx:id="Modelo" prefWidth="102.66668701171875" text="Modelo" />
-                        <TableColumn fx:id="Ano" prefWidth="57.3333740234375" text="Año" />
-                        <TableColumn fx:id="Color" prefWidth="82.6666259765625" text="Color" />
-                        <TableColumn fx:id="Kms" prefWidth="111.33331298828125" text="Kilometros" />
-                        <TableColumn fx:id="Precio" prefWidth="147.3333740234375" text="Precio" />
+                      <TableColumn fx:id="Marca" prefWidth="79.33331298828125" text="Marca" />
+                        <TableColumn fx:id="Modelo" prefWidth="90.66668701171875" text="Modelo" />
+                        <TableColumn fx:id="Ano" prefWidth="64.6666259765625" text="Año" />
+                        <TableColumn fx:id="Color" prefWidth="71.3333740234375" text="Color" />
+                        <TableColumn fx:id="Kms" prefWidth="90.0" text="Kilometros" />
+                        <TableColumn fx:id="Precio" prefWidth="98.6666259765625" text="Precio" />
+                        <TableColumn fx:id="CC" prefWidth="105.33333333333337" text="CC" />
                     </columns>
                   </TableView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -125,7 +126,7 @@
                               <Insets left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#switchToFormularioCoches" prefHeight="25.0" prefWidth="166.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Añadir Vehículo" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#showAddMenu" prefHeight="25.0" prefWidth="166.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Añadir Vehículo" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="40.0" />
                            </HBox.margin>
@@ -137,7 +138,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="271.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToModCar" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Modificar Vehículo" textFill="WHITE">
+                        <Button layoutX="271.0" layoutY="10.0" mnemonicParsing="false" onAction="#showModifyMenu" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-font-size: 13px;" text="Modificar Vehículo" textFill="WHITE">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -160,13 +161,13 @@
       </VBox>
       <ExpansionPanel layoutX="215.0" layoutY="22.0" prefHeight="94.0" prefWidth="685.0" style="-fx-background-color: #053CC8;" />
       <Label layoutX="253.0" layoutY="48.0" prefHeight="41.0" prefWidth="222.0" style="-fx-font-family: elephant; -fx-border-color: white; -fx-font-size: 30;" text="VEHÍCULOS" textFill="#f2f2f2" />
-      <DialogPane layoutX="378.0" layoutY="157.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="129.0" prefWidth="427.0" style="-fx-border-color: #053CC8;" visible="false">
+      <DialogPane fx:id="changeAdd" layoutX="378.0" layoutY="157.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="129.0" prefWidth="427.0" style="-fx-border-color: #053CC8;" visible="false">
           <header>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="131.0" prefWidth="427.0">
                <children>
                   <Label layoutX="32.0" layoutY="14.0" style="-fx-font-family: elephant;" text="¿QUÉ TIPO DE VEHÍCULO QUIERES AÑADIR?" />
                   <Separator layoutY="39.0" prefHeight="3.0" prefWidth="427.0" style="-fx-background-color: #053CC8;" />
-                  <Button layoutX="46.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: #053CC8; -fx-background-radius: 40px; -fx-font-family: elephant; -fx-font-size: 16;" text="Coche" textFill="WHITE">
+                  <Button layoutX="46.0" layoutY="48.0" mnemonicParsing="false" onAction="#switchToFormularioCoches" prefHeight="41.0" prefWidth="116.0" style="-fx-background-color: #053CC8; -fx-background-radius: 40px; -fx-font-family: elephant; -fx-font-size: 16;" text="Coche" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -174,7 +175,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button layoutX="282.0" layoutY="48.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="91.0" style="-fx-background-color: #053CC8; -fx-background-radius: 40px; -fx-font-family: elephant; -fx-font-size: 16;" text="Moto" textFill="WHITE">
+                  <Button layoutX="282.0" layoutY="48.0" mnemonicParsing="false" onAction="#switchToFormularioMotos" prefHeight="41.0" prefWidth="125.0" style="-fx-background-color: #053CC8; -fx-background-radius: 40px; -fx-font-family: elephant; -fx-font-size: 16;" text="Moto" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -192,13 +193,13 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
           </expandableContent>
       </DialogPane>
-      <DialogPane layoutX="388.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="129.0" prefWidth="427.0" style="-fx-border-color: #053CC8;" visible="false">
+      <DialogPane fx:id="changeMod" layoutX="388.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="129.0" prefWidth="427.0" style="-fx-border-color: #053CC8;" visible="false">
          <header>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="131.0" prefWidth="427.0">
                <children>
                   <Label layoutX="18.0" layoutY="14.0" style="-fx-font-family: elephant;" text="¿QUÉ TIPO DE VEHÍCULO QUIERES MODIFICAR?" />
                   <Separator layoutY="39.0" prefHeight="3.0" prefWidth="427.0" style="-fx-background-color: #053CC8;" />
-                  <Button layoutX="46.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: #053CC8; -fx-background-radius: 40px; -fx-font-family: elephant; -fx-font-size: 16;" text="Coche" textFill="WHITE">
+                  <Button layoutX="46.0" layoutY="48.0" mnemonicParsing="false" onAction="#switchToModCar" prefHeight="41.0" prefWidth="111.0" style="-fx-background-color: #053CC8; -fx-background-radius: 40px; -fx-font-family: elephant; -fx-font-size: 16;" text="Coche" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -207,7 +208,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="282.0" layoutY="48.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="91.0" style="-fx-background-color: #053CC8; -fx-background-radius: 40px; -fx-font-family: elephant; -fx-font-size: 16;" text="Moto" textFill="WHITE">
+                  <Button layoutX="282.0" layoutY="48.0" mnemonicParsing="false" onAction="#switchToModMoto" prefHeight="41.0" prefWidth="109.0" style="-fx-background-color: #053CC8; -fx-background-radius: 40px; -fx-font-family: elephant; -fx-font-size: 16;" text="Moto" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -226,5 +227,14 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
          </expandableContent>
       </DialogPane>
+      <Button layoutX="568.0" layoutY="47.0" mnemonicParsing="false" onAction="#switchToDelete" style="-fx-font-size: 20; -fx-font-family: elephant; -fx-border-color: white; -fx-border-radius: 40px; -fx-background-color: transparent;" text="ELIMINAR VEHÍCULO" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/trash-bin.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

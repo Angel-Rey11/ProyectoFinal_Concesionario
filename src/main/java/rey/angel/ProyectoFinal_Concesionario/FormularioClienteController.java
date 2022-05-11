@@ -77,21 +77,24 @@ public class FormularioClienteController {
      */
     @FXML
     private void AddClient() throws IOException {
-    	if (dni.getText().matches("^[0-9]{7,8}[A-Z]$")) {
-    		Cliente client = new Cliente(dni.getText(),nombre.getText(),apellidos.getText(),correo.getText(),telefono.getText(),direccion.getText(),Codigo_postal.getText());
-            cd.insert(client);
-            dni.clear();
-            nombre.clear();
-            apellidos.clear();
-            correo.clear();
-            telefono.clear();
-            direccion.clear();
-            Codigo_postal.clear();
-            AlertAdd();
+    	Cliente c = cd.get(dni.getText());
+    	if (c==null) {
+    		if (dni.getText().matches("^[0-9]{7,8}[A-Z]$") && telefono.getText().matches("^[0-9]{9}$") && 
+        			Codigo_postal.getText().matches("^[0-9]{5}$")) {
+    			Cliente client = new Cliente(dni.getText(),nombre.getText(),apellidos.getText(),correo.getText(),telefono.getText(),direccion.getText(),Codigo_postal.getText());
+                cd.insert(client);
+                dni.clear();
+                nombre.clear();
+                apellidos.clear();
+                correo.clear();
+                telefono.clear();
+                direccion.clear();
+                Codigo_postal.clear();
+                AlertAdd();
+    	}
     	} else {
     		AlertError();
     	}
-    	
     	}
     
     /**

@@ -8,15 +8,15 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import rey.angel.ProyectoFinal_Concesionario.model.Dao.CarDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
-import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Car;
+import rey.angel.ProyectoFinal_Concesionario.model.Dao.MotorBikeDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.MotorBike;
 
-public class ModificaCocheController {
+public class ModificaMotoController {
 	
-	CarDao cd = new CarDao();
-
+	MotorBikeDao mbd = new MotorBikeDao();
+	
 	@FXML
 	private TextField Matricula;
 	@FXML
@@ -30,21 +30,23 @@ public class ModificaCocheController {
 	@FXML
 	private TextField Kms;
 	@FXML
-	private TextField precio;
+	private TextField Precio;
 	@FXML
-	private DialogPane mod;
+	private TextField Cilindrada;
 	@FXML
 	private TextField modifica;
+	@FXML
+	private DialogPane mod;
 	
 	/**
-	 * Metodo que recoge el texfField si cumple la condicion, busca el coche 
+	 * Metodo que recoge el texfField si cumple la condicion, busca la moto 
 	 * y hace un set de todos los campos en los TextField correspondientes
 	 * Oculta el panel de dialogo
-	 * Muestra alertas si no ha podido encontrar el coche o el formato de la matricula no es correcta
+	 * Muestra alertas si no ha podido encontrar la moto o el formato de la matricula no es correcta
 	 * @throws IOException
 	 */
 	@FXML
-	private void ModifyCar() throws IOException {
+	private void ModifyMoto() throws IOException {
 		try {
 			if (modifica.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
 				Coche c = CocheDao.get(modifica.getText());
@@ -54,30 +56,24 @@ public class ModificaCocheController {
 				Ano.setText(c.getAno());
 				Color.setText(c.getColor());
 				Kms.setText(c.getKilometros());
-				precio.setText(c.getPrecio());
+				Precio.setText(c.getPrecio());
+				Cilindrada.setText(c.getCilindrada());
 				mod.setVisible(false);
 			}
 		} catch (Exception e) {
 			AlertError();
-		}	
+		}
 	}
 	
-	/**
-	 * Metodo para modificar el coche, crea un nuevo coche con los datos de los TextField y modifica el coche
-	 * Muestra alertas si se ha podido modificar o no el coche
-	 * @throws IOException
-	 */
 	@FXML
 	private void SaveChanges() throws IOException {
-		try {
-			Car car = new Car (Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kms.getText(),precio.getText());
-			cd.update(car);
-			AlertMod();
-			
-		} catch (Exception e) {
-			AlertErrorMod();
-		}
-		
+			try {
+				MotorBike mb = new MotorBike(Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kms.getText(),Precio.getText(),Cilindrada.getText());
+				mbd.update(mb);
+				AlertMod();
+			} catch (Exception e) {
+				AlertErrorMod();
+			}	
 	}
 	
 	/**
@@ -108,7 +104,7 @@ public class ModificaCocheController {
     }
 	
 	/**
-	 * Alerta que se muestra si ha podido modificar el coche
+	 * Alerta que se muestra si ha podido modificar la moto
 	 * @throws IOException
 	 */
 	private void AlertMod() throws IOException {
@@ -123,7 +119,7 @@ public class ModificaCocheController {
     }
     
 	/**
-	 * Alerta que se muestra si no ha encontrado el coche o la matricula no cumple el formato
+	 * Alerta que se muestra si no ha encontrado la moto o la matricula no cumple el formato
 	 * @throws IOException
 	 */
     private void AlertError() throws IOException {
@@ -137,7 +133,7 @@ public class ModificaCocheController {
     }
     
     /**
-     * Alerta que se muestra si no se ha podido modificar los cambios
+     * Alerta que se muestra si no se ha podido modificar los cambios de la moto
      * @throws IOException
      */
     private void AlertErrorMod() throws IOException {

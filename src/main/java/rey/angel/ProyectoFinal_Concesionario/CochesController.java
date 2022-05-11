@@ -10,17 +10,19 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
-import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 
 public class CochesController {
 	
-	CocheDao cd = new CocheDao();
-	
+	@FXML
+	private DialogPane changeAdd;
+	@FXML
+	private DialogPane changeMod;
 	@FXML
 	private TableView<Coche> tab;
 	@FXML
@@ -39,7 +41,9 @@ public class CochesController {
 	private TableColumn<Coche, String> Kms;
 	@FXML
 	private TableColumn<Coche, String> Precio;
-	private List<Coche> misCoches = (List<Coche>) cd.getAll();
+	@FXML
+	private TableColumn<Coche, String> CC;
+	private List<Coche> misCoches = (List<Coche>) CocheDao.getAll();
 	private final ObservableList<Coche> data = FXCollections.observableArrayList(misCoches);
 	
 	/**
@@ -115,6 +119,30 @@ public class CochesController {
 			ssp.setValue(coche.getValue().getPrecio());
 			return ssp;
 		});
+		
+		CC.setCellValueFactory(coche -> {
+			SimpleStringProperty ssp = new SimpleStringProperty();
+			ssp.setValue(coche.getValue().getCilindrada());
+			return ssp;
+		});
+	}
+	
+	/**
+	 * Metodo para mostrar el menu para elegir que quieres añadir
+	 * @throws IOException
+	 */
+	@FXML
+	private void showAddMenu() throws IOException {
+		changeAdd.setVisible(true);
+	}
+	
+	/**
+	 * Metodo para mostrar el menu para elegir que quieres modificar
+	 * @throws IOException
+	 */
+	@FXML
+	private void showModifyMenu() throws IOException {
+		changeMod.setVisible(true);
 	}
 	
 	/**
@@ -154,11 +182,38 @@ public class CochesController {
     }
 	
 	/**
+	 * Metodo para cambiar a la pantalla del formulario para añadir un coche
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+	@FXML
+    private void switchToFormularioMotos() throws IOException {
+        App.setRoot("FormularioMotos");
+    }
+	
+	/**
 	 * Metodo para cambiar a la pantalla de modificar un coche
 	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
 	 */
 	@FXML
     private void switchToModCar() throws IOException {
         App.setRoot("ModificaCoche");
+    }
+	
+	/**
+	 * Metodo para cambiar a la pantalla de modificar una moto
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+	@FXML
+    private void switchToModMoto() throws IOException {
+        App.setRoot("ModificaMoto");
+    }
+	
+	/**
+	 * Metodo para cambiar a la pantalla de eliminar vehiculo
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+    @FXML
+    private void switchToDelete() throws IOException {
+        App.setRoot("DeleteCoche");
     }
 }

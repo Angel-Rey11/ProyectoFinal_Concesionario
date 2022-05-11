@@ -68,9 +68,12 @@ public class ModificaClienteController {
 	@FXML
 	private void saveChanges() throws IOException {
 		try {
+			if (DNI.getText().matches("^[0-9]{7,8}[A-Z]$") && Teléfono.getText().matches("^[0-9]{9}$") && 
+        			Codigo_Postal.getText().matches("^[0-9]{5}$")) {
 			Cliente c = new Cliente(DNI.getText(),Nombre.getText(),Apellidos.getText(),Correo.getText(),Teléfono.getText(),Dirección.getText(),Codigo_Postal.getText());
 	    	cd.update(c);
 	    	AlertMod();
+			}
 		} catch (Exception e) {
 			AlertErrorMod();
 		}

@@ -210,7 +210,7 @@
                 <header>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="229.0" prefWidth="459.0">
                      <children>
-                        <Label layoutX="29.0" layoutY="22.0" style="-fx-font-size: 20px; -fx-font-family: elephant; -fx-border-color: #053CC8;" text="MODIFICAR VEHÍCULO" />
+                        <Label layoutX="88.0" layoutY="23.0" style="-fx-font-size: 20px; -fx-font-family: elephant; -fx-border-color: #053CC8;" text="MODIFICAR VEHÍCULO" />
                         <Separator layoutX="8.0" layoutY="70.0" prefHeight="3.0" prefWidth="443.0" style="-fx-border-color: #053CC8;" />
                         <Label layoutX="14.0" layoutY="106.0" style="-fx-font-size: 14px; -fx-font-family: elephant;" text="Introduce la Matrícula del Vehículo:" />
                         <TextField fx:id="modifica" layoutX="275.0" layoutY="102.0" prefHeight="25.0" prefWidth="170.0" />

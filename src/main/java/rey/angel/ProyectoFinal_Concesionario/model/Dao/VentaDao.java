@@ -1,16 +1,12 @@
 package rey.angel.ProyectoFinal_Concesionario.model.Dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-
-import rey.angel.ProyectoFinal_Concesionario.Interfaces.IDao;
 import rey.angel.ProyectoFinal_Concesionario.Interfaces.IVentaDAO;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
@@ -25,7 +21,6 @@ public class VentaDao implements IVentaDAO<Venta, Coche>{
 	}
 	
 	ClienteDao cd = new ClienteDao();
-	CocheDao cod = new CocheDao();
 
 	/**
 	 * Metodo para insertar una venta en la base de datos
@@ -69,7 +64,7 @@ public class VentaDao implements IVentaDAO<Venta, Coche>{
 				aux.setFecha_Compra(rs.getDate(1));
 				Cliente c = cd.get(rs.getString(2));
 				aux.setCliente(c);
-				Coche co = cod.get(rs.getString(3));
+				Coche co = CocheDao.get(rs.getString(3));
 				aux.setCoche(co);
 			}
 		} catch (SQLException e) {
@@ -89,7 +84,7 @@ public class VentaDao implements IVentaDAO<Venta, Coche>{
 		String sql = "UPDATE venta SET Fecha_Compra=? WHERE Matricula=?";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(sql);
-			Coche c = cod.get(ob.getCoche().getMatricula()); 
+			Coche c = CocheDao.get(ob.getCoche().getMatricula());
 			sentencia.setString(2, c.getMatricula());
 			sentencia.setDate(1, ob.getFecha_Compra());
 			sentencia.executeUpdate();
@@ -120,7 +115,7 @@ public class VentaDao implements IVentaDAO<Venta, Coche>{
 			v.setFecha_Compra(rs.getDate(1));
 			Cliente c = cd.get(rs.getString(2));
 			v.setCliente(c);
-			Coche co = cod.get(rs.getString(3));
+			Coche co = CocheDao.get(rs.getString(3));
 			v.setCoche(co);
 			
 		} catch (SQLException e) {

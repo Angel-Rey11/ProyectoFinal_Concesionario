@@ -4,20 +4,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Car;
 import rey.angel.ProyectoFinal_Concesionario.utils.Connect;
 
-public class CarDao extends CocheDao {
-	private Connection miConexion;
+
+public class CarDao extends CocheDao<Car> {
+	private static Connection miConexion;
 	
 	public CarDao() {
-		this.miConexion = Connect.getConnection();
+		miConexion = Connect.getConnection();
 	}
 	
+	/**
+	 * Metodo para insertar un coche en la base de datos
+	 * Le pasamos un coche con todos sus atributos y lo insertamos
+	 * Devuelve boolean true si ha conseguido insertarlo y false si no ha podido
+	 */
 	@Override
-	public boolean insert(Coche ob) {
+	public boolean insert(Car ob) {
 		boolean result=false;
-		String sql = "INSERT INTO coche VALUES (?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO coche VALUES (?,?,?,?,?,?,?,'')";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(sql);
 			sentencia.setString(1, ob.getMatricula());
@@ -36,9 +42,13 @@ public class CarDao extends CocheDao {
 	return result;
 	}
 	
-	
+	/**
+	 * Metodo para modificar un coche con todos sus campos menos la Matricula del coche
+	 * Hace un set de todos sus atributos y se modifica
+	 * Devuelve boolean true si ha podido modificar el coche y false si no ha podido
+	 */
 	@Override
-	public boolean update(Coche ob) {
+	public boolean update(Car ob) {
 		boolean result=false;
 		String consulta="UPDATE coche SET Marca=?, Modelo=?, Ano=?, Color=?, Kilometros=?, "
 				+ "Precio=? WHERE Matricula=?";
