@@ -53,14 +53,14 @@ public class MotorBikeDao extends CocheDao<MotorBike> {
 				+ "Precio=?, Cilindrada=? WHERE Matricula=?";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(consulta);
-			sentencia.setString(7, ob.getMatricula());
+			sentencia.setString(8, ob.getMatricula());
 			sentencia.setString(1, ob.getMarca());
 			sentencia.setString(2, ob.getModelo());
 			sentencia.setString(3, ob.getAno());
 			sentencia.setString(4, ob.getColor());
 			sentencia.setString(5, ob.getKilometros());
 			sentencia.setString(6, ob.getPrecio());
-			sentencia.setString(8, ob.getCilindrada());
+			sentencia.setString(7, ob.getCilindrada());
 			sentencia.executeUpdate();
 			result=true;
 		} catch (SQLException e) {

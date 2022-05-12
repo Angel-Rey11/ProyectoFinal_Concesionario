@@ -12,6 +12,7 @@ import rey.angel.ProyectoFinal_Concesionario.model.Dao.CarDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Car;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 public class ModificaCocheController {
 	
@@ -56,9 +57,11 @@ public class ModificaCocheController {
 				Kms.setText(c.getKilometros());
 				precio.setText(c.getPrecio());
 				mod.setVisible(false);
+				Loggers.LogsInfo("Modificando coche");
 			}
 		} catch (Exception e) {
 			AlertError();
+			Loggers.LogsSevere("El coche no existe o Matricula incorrecta");
 		}	
 	}
 	
@@ -73,9 +76,11 @@ public class ModificaCocheController {
 			Car car = new Car (Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kms.getText(),precio.getText());
 			cd.update(car);
 			AlertMod();
+			Loggers.LogsInfo("Coche modificado con exito");
 			
 		} catch (Exception e) {
 			AlertErrorMod();
+			Loggers.LogsSevere("El coche no se ha podido modificar");
 		}
 		
 	}

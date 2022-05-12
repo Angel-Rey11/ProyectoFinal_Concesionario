@@ -105,8 +105,8 @@ public class Coche implements ICoche{
 
 	@Override
 	public String toString() {
-		return "Coche ->" + "Matricula=" + matricula + ", Marca=" + marca + ", Modelo=" + modelo + ", Año=" + ano + ", Color="
-				+ color + ", Kilometros=" + kilometros + ", Precio=" + precio;
+		return "Coche ->" + "Matricula =" + matricula + " " + marca + " " + modelo + ", Año =" + ano + ", Color ="
+				+ color + ", Kilometros =" + kilometros + ", Precio =" + precio + ", Cilindrada =" + cilindrada;
 	}
 
 	@Override

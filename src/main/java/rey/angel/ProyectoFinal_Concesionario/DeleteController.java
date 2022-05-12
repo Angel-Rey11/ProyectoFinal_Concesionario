@@ -10,6 +10,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 
 public class DeleteController {
@@ -76,14 +77,17 @@ public class DeleteController {
 	 */
 	@FXML
 	private void delCliente() throws IOException {
-		if (delCliente.getText().matches("^[0-9]{7,8}[A-Z]$")) {
-			Cliente c = cd.get(delCliente.getText());
-			cd.delete(c);
-			AlertDelCli();
-		} else {
+		try {
+			if (delCliente.getText().matches("^[0-9]{7,8}[A-Z]$")) {
+				Cliente c = cd.get(delCliente.getText());
+				cd.delete(c);
+				AlertDelCli();
+				Loggers.LogsInfo("Cliente eliminado");
+			}
+		} catch (Exception e) {
 			AlertErrorDelCli();
-		}
-			
+			Loggers.LogsSevere("No se ha podido eliminar el cliente");
+		}	
 	}
 	
 	/**
@@ -110,9 +114,10 @@ public class DeleteController {
 	        alert.setTitle("ERROR");
 	        alert.setHeaderText("ERROR AL ELIMINAR EL CLIENTE");
 	        alert.setContentText("No se ha podido eliminar el cliente o los datos son incorrectos");
-	        alert.show();
 	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
 	        s.toFront();
+	        alert.showAndWait();
+	        mod.setVisible(false);
 	    }
 	    
 }

@@ -10,6 +10,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 public class DeleteCocheController {
 	
@@ -26,12 +27,16 @@ public class DeleteCocheController {
 	 */
 	@FXML
 	private void delCoche() throws IOException {
-		if (delCoche.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
-			Coche co = CocheDao.get(delCoche.getText());
-			CocheDao.delete(co);
-			AlertDelCar();
-		} else {
+		try {
+			if (delCoche.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
+				Coche co = CocheDao.get(delCoche.getText());
+				CocheDao.delete(co);
+				AlertDelCar();
+				Loggers.LogsInfo("Vehiculo eliminado");
+			}
+		} catch (Exception e) {
 			AlertErrorDelCar();
+			Loggers.LogsSevere("No se ha podido eliminar el vehiculo");
 		}
 	}
 	
@@ -68,8 +73,9 @@ public class DeleteCocheController {
         alert.setTitle("ERROR");
         alert.setHeaderText("ERROR AL ELIMINAR EL VEHICULO");
         alert.setContentText("No se ha podido eliminar el vehiculo o los datos son incorrectos");
-        alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();
+        alert.showAndWait();
+        mod.setVisible(false);
     }
 }

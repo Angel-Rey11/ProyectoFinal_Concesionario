@@ -1,6 +1,7 @@
 package rey.angel.ProyectoFinal_Concesionario;
 
 import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
@@ -10,6 +11,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 public class FormularioClienteController {
 	
@@ -91,9 +93,15 @@ public class FormularioClienteController {
                 direccion.clear();
                 Codigo_postal.clear();
                 AlertAdd();
+                Loggers.LogsInfo("Cliente añadido");
+                
+    	} else {
+    		AlertErrorType();
+    		Loggers.LogsSevere("Datos introducidos del cliente son incorrectos");
     	}
     	} else {
     		AlertError();
+    		Loggers.LogsSevere("Cliente ya existe");
     	}
     	}
     
@@ -113,14 +121,28 @@ public class FormularioClienteController {
     }
     
     /**
-     * Alerta que se muestra si no se ha podido añadir el cliente
+     * Alerta que se muestra si no se ha podido añadir el cliente porque ya existe
      * @throws IOException
      */
     private void AlertError() throws IOException {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("ERROR AL AÑADIR EL CLIENTE");
-        alert.setContentText("Los datos introducidos del cliente no son correctos o ya existe");
+        alert.setContentText("El cliente ya existe");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    /**
+     * Alerta que se muestra si no se ha podido añadir el cliente porque los datos introducidos no son correctos
+     * @throws IOException
+     */
+    private void AlertErrorType() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL AÑADIR EL CLIENTE");
+        alert.setContentText("Los datos introducidos no son correctos");
         alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();

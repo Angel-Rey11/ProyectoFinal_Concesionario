@@ -20,6 +20,7 @@ import rey.angel.ProyectoFinal_Concesionario.model.Dao.VentaDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Venta;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 public class VentasController {
 	
@@ -54,8 +55,10 @@ public class VentasController {
 			cliente.getItems().addAll(misClientes);
 			coche.getItems().addAll(misCoches);
 			AlertLoad();
+			Loggers.LogsInfo("Los datos de las ventas se han cargado con exito");
 		} catch(Exception e) {
 			AlertErrorLoad();
+			Loggers.LogsSevere("Error al cargar los datos de las ventas");
 		}
 		
 	}
@@ -78,8 +81,10 @@ public class VentasController {
 			cliente.getSelectionModel().clearSelection();
 			coche.getSelectionModel().clearSelection();
 			AlertAdd();
+			Loggers.LogsInfo("Venta añadida correctamente");
 		} catch (Exception e) {
 			AlertError();
+			Loggers.LogsSevere("Venta no se puede añadir");
 		}
 	}
 	
@@ -111,18 +116,22 @@ public class VentasController {
 	 */
 	@FXML
 	private void ModifySell() throws IOException {
-		if (modifica.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
-		Venta v = vd.get(modifica.getText());
-		date.setValue(v.getFecha_Compra().toLocalDate());
-		cliente.setValue(v.getCliente());
-		coche.setValue(v.getCoche());
-		mod.setVisible(false);
-		bot.setVisible(true);
-		cliente.setDisable(true);
-		coche.setDisable(true);
-	} else {
-		AlertErrorMod();
-	}
+		try {
+			if (modifica.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
+				Venta v = vd.get(modifica.getText());
+				date.setValue(v.getFecha_Compra().toLocalDate());
+				cliente.setValue(v.getCliente());
+				coche.setValue(v.getCoche());
+				mod.setVisible(false);
+				bot.setVisible(true);
+				cliente.setDisable(true);
+				coche.setDisable(true);
+				Loggers.LogsInfo("Modificando venta");
+			}
+		} catch (Exception e) {
+			AlertErrorMod();
+			Loggers.LogsSevere("Venta no encontrada o Matricula incorrecta");
+		}
 	}
 	
 	/**
@@ -150,6 +159,7 @@ public class VentasController {
 		cliente.getSelectionModel().clearSelection();
 		coche.getSelectionModel().clearSelection();
 		AlertMod();
+		Loggers.LogsInfo("Venta modificada con exito");
 	}
 	
 	/**

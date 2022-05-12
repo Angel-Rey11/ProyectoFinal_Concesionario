@@ -11,6 +11,7 @@ import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.MotorBikeDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.MotorBike;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 public class FormularioMotosController {
 	MotorBikeDao mbd = new MotorBikeDao();
@@ -86,9 +87,14 @@ public class FormularioMotosController {
 				Kilometros.clear();
 				Precio.clear();
 				Cilindrada.clear();
+				Loggers.LogsInfo("Moto añadida");
+			} else {
+				AlertErrorType();
+				Loggers.LogsSevere("Datos de la moto son incorrectos");
 			}
 		} else {
 			AlertError();
+			Loggers.LogsSevere("Moto ya existe");
 		}
 	}
 	
@@ -108,17 +114,31 @@ public class FormularioMotosController {
 	    }
 	 
 	 /**
-	  * Alerta que se muestra si no se ha podido añadir el vehiculo
+	  * Alerta que se muestra si no se ha podido añadir el vehiculo porque ya existe
 	  * @throws IOException
 	  */
 	 private void AlertError() throws IOException {
 	    	Alert alert = new Alert(AlertType.ERROR);
 	        alert.setTitle("ERROR");
 	        alert.setHeaderText("ERROR AL AÑADIR EL VEHICULO");
-	        alert.setContentText("Los datos introducidos del vehiculo no son correctos o ya existe el vehiculo");
+	        alert.setContentText("El vehiculo ya existe");
 	        alert.show();
 	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
 	        s.toFront();
-	    }
+	 }
+	 
+	 /**
+	  * Alerta que se muestra si no se ha podido añadir el vehiculo porque los datos introducidos no son correctos
+	  * @throws IOException
+	  */
+	 private void AlertErrorType() throws IOException {
+	    	Alert alert = new Alert(AlertType.ERROR);
+	        alert.setTitle("ERROR");
+	        alert.setHeaderText("ERROR AL AÑADIR EL VEHICULO");
+	        alert.setContentText("Los datos introducidos no son correctos");
+	        alert.show();
+	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+	        s.toFront();
+	 }
 	
 }

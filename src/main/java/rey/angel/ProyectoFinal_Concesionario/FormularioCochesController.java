@@ -11,6 +11,7 @@ import rey.angel.ProyectoFinal_Concesionario.model.Dao.CarDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Car;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 public class FormularioCochesController {
 	
@@ -90,9 +91,14 @@ public class FormularioCochesController {
 				Color.clear();
 				Kilometros.clear();
 				Precio.clear();
+				Loggers.LogsInfo("Coche añadido");
+			} else {
+				AlertErrorType();
+				Loggers.LogsSevere("Los datos introducidos del coche no son correctos");
 			}
 		} else {
 			AlertError();
+			Loggers.LogsSevere("Vehiculo ya existe");
 		}
 	}
 	
@@ -112,16 +118,30 @@ public class FormularioCochesController {
 	    }
 	 
 	 /**
-	  * Alerta que se muestra si no se ha podido añadir el vehiculo
+	  * Alerta que se muestra si no se ha podido añadir el vehiculo porque ya existe
 	  * @throws IOException
 	  */
 	 private void AlertError() throws IOException {
 	    	Alert alert = new Alert(AlertType.ERROR);
 	        alert.setTitle("ERROR");
 	        alert.setHeaderText("ERROR AL AÑADIR EL VEHICULO");
-	        alert.setContentText("Los datos introducidos del vehiculo no son correctos o ya existe el vehiculo");
+	        alert.setContentText("El vehiculo introducido ya existe");
 	        alert.show();
 	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
 	        s.toFront();
-	    }
+	 }
+	 
+	 /**
+	  * Alerta que se muestra si no se ha podido añadir el vehiculo porque los datos introducidos no son correctos
+	  * @throws IOException
+	  */
+	 private void AlertErrorType() throws IOException {
+	    	Alert alert = new Alert(AlertType.ERROR);
+	        alert.setTitle("ERROR");
+	        alert.setHeaderText("ERROR AL AÑADIR EL VEHICULO");
+	        alert.setContentText("Los datos introducidos no son correctos");
+	        alert.show();
+	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+	        s.toFront();
+	 }
 }

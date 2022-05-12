@@ -10,6 +10,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.ClienteDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Cliente;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 public class ModificaClienteController {
 	
@@ -43,20 +44,23 @@ public class ModificaClienteController {
 	 */
 	@FXML
 	private void modifyClient() throws IOException {
-		if (modifica.getText().matches("^[0-9]{7,8}[A-Z]$")) {
-			Cliente c = cd.get(modifica.getText());
-			DNI.setText(c.getDni());
-			Nombre.setText(c.getNombre());
-			Apellidos.setText(c.getApellidos());
-			Correo.setText(c.getCorreo());
-			Teléfono.setText(c.getTelefono());
-			Dirección.setText(c.getDireccion());
-			Codigo_Postal.setText(c.getCodigo_postal());
-			mod.setVisible(false);
-		} else {
+		try {
+			if (modifica.getText().matches("^[0-9]{7,8}[A-Z]$")) {
+				Cliente c = cd.get(modifica.getText());
+				DNI.setText(c.getDni());
+				Nombre.setText(c.getNombre());
+				Apellidos.setText(c.getApellidos());
+				Correo.setText(c.getCorreo());
+				Teléfono.setText(c.getTelefono());
+				Dirección.setText(c.getDireccion());
+				Codigo_Postal.setText(c.getCodigo_postal());
+				mod.setVisible(false);
+				Loggers.LogsInfo("Modificando cliente");
+			}
+		} catch (Exception e) {
 			AlertError();
+			Loggers.LogsSevere("Cliente no encontrado o DNI incorrecto");
 		}
-		
 	}
 	
 	/**
@@ -73,9 +77,11 @@ public class ModificaClienteController {
 			Cliente c = new Cliente(DNI.getText(),Nombre.getText(),Apellidos.getText(),Correo.getText(),Teléfono.getText(),Dirección.getText(),Codigo_Postal.getText());
 	    	cd.update(c);
 	    	AlertMod();
+	    	Loggers.LogsInfo("Cliente modificado");
 			}
 		} catch (Exception e) {
 			AlertErrorMod();
+			Loggers.LogsSevere("Cliente no se ha podido modificar correctamente");
 		}
 			
 	}

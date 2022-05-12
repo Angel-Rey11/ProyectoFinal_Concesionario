@@ -25,7 +25,7 @@
             <Insets top="50.0" />
          </padding>
          <children>
-            <Button id="c" alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Clientes" textFill="#fffefe">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Clientes" textFill="#fffefe">
                <VBox.margin>
                   <Insets right="10.0" top="30.0" />
                </VBox.margin>
@@ -38,7 +38,7 @@
                </graphic>
             </Button>
             <Separator prefWidth="200.0" />
-            <Button id="v" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToCoches" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Vehiculos" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#switchToCoches" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Vehiculos" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
@@ -54,7 +54,7 @@
                </graphic>
             </Button>
             <Separator prefWidth="200.0" />
-            <Button id="ve" layoutX="10.0" layoutY="186.0" mnemonicParsing="false" onAction="#switchToVentas" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Ventas" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false" onAction="#switchToVentas" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 20;" text="Ventas" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>
@@ -70,7 +70,7 @@
                </graphic>
             </Button>
             <Separator prefWidth="200.0" />
-            <Button id="me" layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToMenu" prefHeight="46.0" prefWidth="215.0" style="-fx-background-color: transparent; -fx-font-family: elephant; -fx-font-size: 14;" text="Menú Principal" textFill="WHITE">
                <font>
                   <Font name="Eras Demi ITC" size="15.0" />
                </font>

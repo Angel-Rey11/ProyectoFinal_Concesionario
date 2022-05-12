@@ -12,6 +12,7 @@ import rey.angel.ProyectoFinal_Concesionario.model.Dao.CocheDao;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.MotorBikeDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Coche;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.MotorBike;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 public class ModificaMotoController {
 	
@@ -59,9 +60,11 @@ public class ModificaMotoController {
 				Precio.setText(c.getPrecio());
 				Cilindrada.setText(c.getCilindrada());
 				mod.setVisible(false);
+				Loggers.LogsInfo("Modificando moto");
 			}
 		} catch (Exception e) {
 			AlertError();
+			Loggers.LogsSevere("La moto no existe o Matricula incorrecta");
 		}
 	}
 	
@@ -71,8 +74,10 @@ public class ModificaMotoController {
 				MotorBike mb = new MotorBike(Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kms.getText(),Precio.getText(),Cilindrada.getText());
 				mbd.update(mb);
 				AlertMod();
+				Loggers.LogsInfo("Moto modificada con exito");
 			} catch (Exception e) {
 				AlertErrorMod();
+				Loggers.LogsSevere("La moto no se ha podido modificar");
 			}	
 	}
 	
