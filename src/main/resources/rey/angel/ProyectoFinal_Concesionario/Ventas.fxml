@@ -107,7 +107,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="735.0" layoutY="251.0" mnemonicParsing="false" onAction="#ModifyMenu" prefHeight="46.0" prefWidth="155.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-background-radius: 40px;" text="Modificar Venta" textFill="WHITE">
+      <Button layoutX="735.0" layoutY="225.0" mnemonicParsing="false" onAction="#ModifyMenu" prefHeight="46.0" prefWidth="155.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant; -fx-background-radius: 40px;" text="Modificar Venta" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -116,7 +116,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="735.0" layoutY="358.0" mnemonicParsing="false" onAction="#switchToShowSells" prefHeight="46.0" prefWidth="155.0" style="-fx-background-radius: 40px; -fx-background-color: #053CC8; -fx-font-family: elephant;" text="Mostrar Ventas" textFill="WHITE">
+      <Button layoutX="735.0" layoutY="297.0" mnemonicParsing="false" onAction="#switchToShowSells" prefHeight="46.0" prefWidth="155.0" style="-fx-background-radius: 40px; -fx-background-color: #053CC8; -fx-font-family: elephant;" text="Mostrar Ventas" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -191,6 +191,77 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <DialogPane fx:id="search" layoutX="94.0" layoutY="42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="138.0" prefWidth="455.0" style="-fx-border-color: #053CC8;" visible="false">
+                      <header>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="147.0" prefWidth="455.0">
+                           <children>
+                              <Label layoutX="12.0" layoutY="14.0" style="-fx-font-family: elephant; -fx-font-size: 11;" text="¿QUIERE HACER UNA BÚSQUEDA DEL CLIENTE Y EL VEHÍCULO?" />
+                              <Button layoutX="56.0" layoutY="58.0" mnemonicParsing="false" onAction="#SearchYes" prefHeight="38.0" prefWidth="76.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="SÍ" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/cheque.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="320.0" layoutY="58.0" mnemonicParsing="false" onAction="#SearchNo" prefHeight="38.0" prefWidth="75.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="NO" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="23.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/boton.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                      </header>
+                      <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+                      </content>
+                      <expandableContent>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+                      </expandableContent>
+                  </DialogPane>
+                  <DialogPane fx:id="searchD" layoutX="32.0" layoutY="-48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="222.0" prefWidth="480.0" style="-fx-border-color: #053CC8;" visible="false">
+                      <header>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="477.0">
+                           <children>
+                              <Label layoutX="48.0" layoutY="21.0" style="-fx-font-family: elephant; -fx-border-color: #053CC8; -fx-font-size: 16;" text="BÚSQUEDA DE CLIENTES Y VEHÍCULOS" />
+                              <Separator layoutY="60.0" prefHeight="3.0" prefWidth="479.0" style="-fx-background-color: #053CC8;" />
+                              <TextField fx:id="searchDni" layoutX="259.0" layoutY="74.0" prefHeight="25.0" prefWidth="173.0" stylesheets="@../css/cssSearch.css" />
+                              <TextField fx:id="searchM" layoutX="259.0" layoutY="117.0" prefHeight="25.0" prefWidth="173.0" stylesheets="@../css/cssSearch.css" />
+                              <Label layoutX="92.0" layoutY="78.0" style="-fx-font-family: elephant;" text="DNI DEL CLIENTE:" />
+                              <Label layoutX="14.0" layoutY="121.0" style="-fx-font-family: elephant;" text="MATRÍCULA DEL VEHÍCULO:" />
+                              <Button layoutX="48.0" layoutY="166.0" mnemonicParsing="false" onAction="#SearchObjects" prefHeight="36.0" prefWidth="106.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Aceptar" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/buscar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="332.0" layoutY="166.0" mnemonicParsing="false" onAction="#ClosePanel" prefHeight="36.0" prefWidth="114.0" style="-fx-background-color: #053CC8; -fx-font-family: elephant;" text="Cancelar" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="21.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/boton.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                      </header>
+                      <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+                      </content>
+                      <expandableContent>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+                      </expandableContent>
+                  </DialogPane>
                </children>
             </AnchorPane>
           </header>
@@ -201,5 +272,13 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
           </expandableContent>
       </DialogPane>
+      <Button layoutX="735.0" layoutY="370.0" mnemonicParsing="false" onAction="#switchToConsulta" prefHeight="40.0" prefWidth="155.0" style="-fx-background-color: #053CC8; -fx-background-radius: 40px; -fx-font-family: elephant; -fx-font-size: 14;" text="Consultas" textFill="#fffdfd">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/analisis-de-consultas.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

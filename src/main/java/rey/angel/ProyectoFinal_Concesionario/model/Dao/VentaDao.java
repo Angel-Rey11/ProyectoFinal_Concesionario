@@ -72,6 +72,36 @@ public class VentaDao implements IVentaDAO<Venta, Coche>{
 		}
 		return result;
 	}
+	
+	/**
+	 * Metodo para traer todos las ventas en una coleccion con los clientes y vehiculos que han comprado una marca
+	 * en concreto
+	 * Bucle While para ir buscando todos las ventas y traer todos sus datos
+	 * Se devuelve una coleccion con todos las ventas con esa condicion
+	 */
+	@Override
+	public Collection<Venta> getAllForMarca(String m) {
+		Collection<Venta> result = new ArrayList<Venta>();
+		String consulta="SELECT v1.Fecha_Compra,c.DNI,c.Nombre,c.Apellidos,v.Matricula,v.Marca,v.Modelo FROM cliente c join venta v1 on"
+				+ "(c.DNI = v1.DNI) join coche v on (v1.Matricula = v.Matricula) WHERE v.Marca=? group by c.Nombre, c.Apellidos";
+		try {
+			PreparedStatement sentencia = miConexion.prepareStatement(consulta);
+			sentencia.setString(1, m);
+			ResultSet rs = sentencia.executeQuery();
+			while (rs.next()) {
+				Venta aux = new Venta();
+				result.add(aux);
+				aux.setFecha_Compra(rs.getDate(1));
+				Cliente c = cd.get(rs.getString(2));
+				aux.setCliente(c);
+				Coche mo = CocheDao.get(rs.getString(5));
+				aux.setCoche(mo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 	/**
 	 * Metodo para modificar una venta con todos sus campos menos el Cliente y el Coche

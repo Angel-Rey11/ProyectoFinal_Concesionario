@@ -41,6 +41,14 @@ public class VentasController {
 	private Button bot;
 	@FXML
 	private Button bot2;
+	@FXML
+	private DialogPane search;
+	@FXML
+	private DialogPane searchD;
+	@FXML
+	private TextField searchDni;
+	@FXML
+	private TextField searchM;
 	
 	/**
 	 * Metodo que añade todos los clientes y coches a los choiceBox para poder elegirlos después
@@ -54,13 +62,43 @@ public class VentasController {
 			List<Coche> misCoches = (List<Coche>) CocheDao.getAll();
 			cliente.getItems().addAll(misClientes);
 			coche.getItems().addAll(misCoches);
-			AlertLoad();
+			search.setVisible(true);
 			Loggers.LogsInfo("Los datos de las ventas se han cargado con exito");
 		} catch(Exception e) {
 			AlertErrorLoad();
 			Loggers.LogsSevere("Error al cargar los datos de las ventas");
 		}
 		
+	}
+	
+	/**
+	 * Metodo para buscar clientes y vehiculos y hacer un set directamente al choiceBox sin tener que buscarlos
+	 * manualmente
+	 * @throws IOException
+	 */
+	@FXML
+	private void SearchObjects() throws IOException {
+		Cliente c = cd.get(searchDni.getText());
+		Coche co = CocheDao.get(searchM.getText());
+		if (c!=null && co!=null) {
+			if (searchDni.getText().matches("^[0-9]{7,8}[A-Z]$") && searchM.getText().matches("^[0-9]{4}-[A-Z]{3}$")) {
+				cliente.setValue(c);
+				coche.setValue(co);
+				searchD.setVisible(false);
+				Loggers.LogsInfo("Se han encontrado los datos y seteado correctamente");
+			} else {
+				Loggers.LogsSevere("Los datos introducidos no son correctos y no se ha realizado la busqueda");
+				AlertSearch();
+			}
+		} else {
+			Loggers.LogsSevere("El cliente o el vehiculo no existen y no se ha podido realizar la busqueda");
+			AlertSearchNull();
+		}
+	}
+	
+	@FXML
+	private void ClosePanel() throws IOException {
+		searchD.setVisible(false);
 	}
 	
 	/**
@@ -106,6 +144,29 @@ public class VentasController {
 		mod.setVisible(true);
 		bot2.setVisible(false);
 		
+	}
+	
+	/**
+	 * Metodo para mostrar un panel de dialogo cuando le das a añadir ventas para la busqueda de cliente y vehiculo
+	 * Se ejecuta cuando le damos SI
+	 * Muestra otro panel para la busqueda de cliente y vehiculo y setear esos datos a los choicebox
+	 * @throws IOException
+	 */
+	@FXML
+	private void SearchYes() throws IOException {
+		search.setVisible(false);
+		searchD.setVisible(true);
+	}
+	
+	/**
+	 * Metodo para mostrar un panel de dialogo cuando le das a añadir ventas para la busqueda de cliente y vehiculo
+	 * Se ejecutra cuando le damos NO
+	 * Se cierra el panel
+	 * @throws IOException
+	 */
+	@FXML
+	private void SearchNo() throws IOException {
+		search.setVisible(false);
 	}
 	
 	/**
@@ -199,6 +260,15 @@ public class VentasController {
 	}
 	
 	/**
+	 * Metodo para cambiar a la pantalla de consulta
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+	@FXML
+	private void switchToConsulta() throws IOException {
+		App.setRoot("Consulta");
+	}
+	
+	/**
 	 * Alerta que se muestra si se ha podido añadir la venta
 	 * @throws IOException
 	 */
@@ -255,17 +325,33 @@ public class VentasController {
     }
     
     /**
-     * Alerta que se muestra si se ha podido cargar los datos
+     * Alerta que se muestra si no se ha podido buscar los datos correspondientes
      * @throws IOException
      */
-    private void AlertLoad() throws IOException {
-    	Alert alert = new Alert(AlertType.INFORMATION);
+    private void AlertSearch() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("INFORMACIÓN");
-        alert.setHeaderText("SE HAN CARGADO LOS DATOS CORRECTAMENTE");
-        alert.setContentText("Se han cargado los datos correctamente");
-        alert.show();
+        alert.setHeaderText("DATOS INCORRECTOS");
+        alert.setContentText("Los datos introducidos son incorrectos");
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();
+        alert.showAndWait();
+        alert.close();
+    }
+    
+    /**
+     * Alerta que se muestra si el cliente o vehiculo no existen
+     * @throws IOException
+     */
+    private void AlertSearchNull() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("INFORMACIÓN");
+        alert.setHeaderText("CLIENTE O VEHICULO NO EXISTEN");
+        alert.setContentText("Por favor, revise los datos y vuelva a introducirlos");
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+        alert.showAndWait();
+        alert.close();
     }
     
     /**

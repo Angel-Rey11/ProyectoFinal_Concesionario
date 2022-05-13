@@ -17,5 +17,6 @@ public interface IVentaDAO<T,K> {
 	boolean insert (T ob);
 	T get (String id);
 	Collection <T> getAll();
+	Collection <T> getAllForMarca(String m);
 	boolean update (T ob);
 }
