@@ -117,23 +117,38 @@
                   </TableView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#consultaMarca" style="-fx-background-color: #053CC8; -fx-background-radius: 40PX; -fx-font-family: ELEPHANT; -fx-font-size: 14;" text="CONSULTAR DATOS " textFill="WHITE">
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/buscar.png" />
+                           </image>
                            <HBox.margin>
-                              <Insets left="30.0" top="5.0" />
+                              <Insets left="10.0" top="5.0" />
                            </HBox.margin>
-                        </Button>
-                        <TextField fx:id="cons" prefHeight="25.0" prefWidth="174.0">
+                        </ImageView>
+                        <TextField fx:id="cons" prefHeight="29.0" prefWidth="179.0" promptText="INTRODUZCA LA MARCA" stylesheets="@../css/cssSearch.css">
                            <HBox.margin>
-                              <Insets left="130.0" top="5.0" />
+                              <Insets left="20.0" top="5.0" />
                            </HBox.margin>
                         </TextField>
+                        <Button mnemonicParsing="false" onAction="#consultaMarca" style="-fx-background-color: #053CC8; -fx-background-radius: 40PX; -fx-font-family: ELEPHANT; -fx-font-size: 14;" text="CONSULTAR DATOS " textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="60.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/seguro-de-coche.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </HBox>
                </children>
             </GridPane>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="117.0" fitWidth="236.0" layoutX="461.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="117.0" fitWidth="236.0" layoutX="752.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/banderasin.png" />
          </image>
