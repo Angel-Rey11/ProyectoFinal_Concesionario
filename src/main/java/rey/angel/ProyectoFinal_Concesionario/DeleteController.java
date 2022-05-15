@@ -83,10 +83,15 @@ public class DeleteController {
 				cd.delete(c);
 				AlertDelCli();
 				Loggers.LogsInfo("Cliente eliminado");
+			} else {
+				AlertErrorDelCliFE();
+				delCliente.clear();
+				Loggers.LogsSevere("Formato del campo incorrecto");
 			}
 		} catch (Exception e) {
 			AlertErrorDelCli();
-			Loggers.LogsSevere("No se ha podido eliminar el cliente");
+			delCliente.clear();
+			Loggers.LogsSevere("El cliente a eliminar no existe");
 		}	
 	}
 	
@@ -113,11 +118,26 @@ public class DeleteController {
 	    	Alert alert = new Alert(AlertType.ERROR);
 	        alert.setTitle("ERROR");
 	        alert.setHeaderText("ERROR AL ELIMINAR EL CLIENTE");
-	        alert.setContentText("No se ha podido eliminar el cliente o los datos son incorrectos");
+	        alert.setContentText("El cliente no existe");
 	        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
 	        s.toFront();
 	        alert.showAndWait();
 	        mod.setVisible(false);
 	    }
+	    
+	    /**
+		  * Alerta que se muestra si el cliente no ha podido ser eliminado
+		  * @throws IOException
+		  */
+		    private void AlertErrorDelCliFE() throws IOException {
+		    	Alert alert = new Alert(AlertType.ERROR);
+		        alert.setTitle("ERROR");
+		        alert.setHeaderText("ERROR AL ELIMINAR EL CLIENTE");
+		        alert.setContentText("Los datos de los campos son erroneos");
+		        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+		        s.toFront();
+		        alert.showAndWait();
+		        mod.setVisible(false);
+		    }
 	    
 }

@@ -56,10 +56,14 @@ public class ModificaClienteController {
 				Codigo_Postal.setText(c.getCodigo_postal());
 				mod.setVisible(false);
 				Loggers.LogsInfo("Modificando cliente");
+			} else {
+				AlertErrorFE();
+				modifica.clear();
+				Loggers.LogsSevere("Formato del campo DNI incorrecto");
 			}
 		} catch (Exception e) {
 			AlertError();
-			Loggers.LogsSevere("Cliente no encontrado o DNI incorrecto");
+			Loggers.LogsSevere("El cliente a modificar no existe");
 		}
 	}
 	
@@ -72,12 +76,14 @@ public class ModificaClienteController {
 	@FXML
 	private void saveChanges() throws IOException {
 		try {
-			if (DNI.getText().matches("^[0-9]{7,8}[A-Z]$") && Teléfono.getText().matches("^[0-9]{9}$") && 
-        			Codigo_Postal.getText().matches("^[0-9]{5}$")) {
+			if (Teléfono.getText().matches("^[0-9]{9}$") && Codigo_Postal.getText().matches("^[0-9]{5}$")) {
 			Cliente c = new Cliente(DNI.getText(),Nombre.getText(),Apellidos.getText(),Correo.getText(),Teléfono.getText(),Dirección.getText(),Codigo_Postal.getText());
 	    	cd.update(c);
 	    	AlertMod();
 	    	Loggers.LogsInfo("Cliente modificado");
+			} else {
+				AlertErrorMod();
+				Loggers.LogsSevere("Formatos erroneos de los campos al modificar el cliente");
 			}
 		} catch (Exception e) {
 			AlertErrorMod();
@@ -136,7 +142,21 @@ public class ModificaClienteController {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("ERROR AL INTRODUCIR EL DNI");
-        alert.setContentText("El DNI del cliente no es correcto o no existe");
+        alert.setContentText("El cliente a modificar no existe");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    /**
+	 * Alerta que se muestra si no encuentra el Cliente o el DNI introducido es incorrecto
+	 * @throws IOException
+	 */
+    private void AlertErrorFE() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL INTRODUCIR EL DNI");
+        alert.setContentText("Formato del campo DNI incorrecto");
         alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();

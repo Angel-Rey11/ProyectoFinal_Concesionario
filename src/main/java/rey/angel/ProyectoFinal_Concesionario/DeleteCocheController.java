@@ -33,10 +33,15 @@ public class DeleteCocheController {
 				CocheDao.delete(co);
 				AlertDelCar();
 				Loggers.LogsInfo("Vehiculo eliminado");
+			} else {
+				AlertErrorDelCarFE();
+				delCoche.clear();
+				Loggers.LogsSevere("Formato del campo incorrecto");
 			}
 		} catch (Exception e) {
 			AlertErrorDelCar();
-			Loggers.LogsSevere("No se ha podido eliminar el vehiculo");
+			delCoche.clear();
+			Loggers.LogsSevere("El vehiculo a eliminar no existe");
 		}
 	}
 	
@@ -72,10 +77,61 @@ public class DeleteCocheController {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("ERROR AL ELIMINAR EL VEHICULO");
-        alert.setContentText("No se ha podido eliminar el vehiculo o los datos son incorrectos");
+        alert.setContentText("El vehiculo no existe");
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();
         alert.showAndWait();
         mod.setVisible(false);
     }
+    
+    /**
+     * Alerta que se muestra si el vehiculo no ha podido ser eliminado
+     * @throws IOException
+     */
+    private void AlertErrorDelCarFE() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL ELIMINAR EL VEHICULO");
+        alert.setContentText("El formato de los campos es erroneo");
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+        alert.showAndWait();
+        mod.setVisible(false);
+    }
+    
+    /**
+	 * Metodo para cambiar a la pantalla de Inicio
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+	@FXML
+	private void SwitchToInicio() throws IOException {
+		App.setRoot("Inicio");
+	}
+	
+	/**
+	 * Metodo para cambiar a la pantalla de coches
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+	@FXML
+	private void SwitchToCoches() throws IOException {
+		App.setRoot("Coches");
+	}
+	
+	/**
+	 * Metodo para cambiar a la pantalla de ventas
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+	@FXML
+	private void SwitchToVentas() throws IOException {
+		App.setRoot("Ventas");
+	}
+	
+	/**
+	 * Metodo para cambiar a la pantalla de Menu Principal
+	 * @throws IOException que muestra si no se puede cambiar de pantalla al pulsar el botón
+	 */
+	@FXML
+	private void SwitchToMenuPrincipal() throws IOException {
+		App.setRoot("MenuPrincipal");
+	}
 }

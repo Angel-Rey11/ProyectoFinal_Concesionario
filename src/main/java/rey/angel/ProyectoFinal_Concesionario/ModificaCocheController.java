@@ -58,10 +58,14 @@ public class ModificaCocheController {
 				precio.setText(c.getPrecio());
 				mod.setVisible(false);
 				Loggers.LogsInfo("Modificando coche");
+			} else {
+				AlertErrorFE();
+				modifica.clear();
+				Loggers.LogsSevere("Formato de la matricula incorrecto");
 			}
 		} catch (Exception e) {
 			AlertError();
-			Loggers.LogsSevere("El coche no existe o Matricula incorrecta");
+			Loggers.LogsSevere("El coche no existe");
 		}	
 	}
 	
@@ -73,11 +77,15 @@ public class ModificaCocheController {
 	@FXML
 	private void SaveChanges() throws IOException {
 		try {
-			Car car = new Car (Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kms.getText(),precio.getText());
-			cd.update(car);
-			AlertMod();
-			Loggers.LogsInfo("Coche modificado con exito");
-			
+			if (Ano.getText().matches("[0-9]{4}") && Kms.getText().matches("[0-9]+") && precio.getText().matches("[0-9]+")) {
+				Car car = new Car (Matricula.getText(),Marca.getText(),Modelo.getText(),Ano.getText(),Color.getText(),Kms.getText(),precio.getText());
+				cd.update(car);
+				AlertMod();
+				Loggers.LogsInfo("Coche modificado con exito");
+			} else {
+				AlertErrorMod();
+				Loggers.LogsSevere("Formato de los campos erroneos al modificar un coche");
+			}
 		} catch (Exception e) {
 			AlertErrorMod();
 			Loggers.LogsSevere("El coche no se ha podido modificar");
@@ -135,7 +143,21 @@ public class ModificaCocheController {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("ERROR AL INTRODUCIR LA MATRICULA");
-        alert.setContentText("La matricula del vehiculo no es correcta o no existe");
+        alert.setContentText("Vehiculo no existe");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    /**
+	 * Alerta que se muestra si no ha encontrado el coche o la matricula no cumple el formato
+	 * @throws IOException
+	 */
+    private void AlertErrorFE() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL INTRODUCIR LA MATRICULA");
+        alert.setContentText("Formato del campo Matricula es erroneo");
         alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();

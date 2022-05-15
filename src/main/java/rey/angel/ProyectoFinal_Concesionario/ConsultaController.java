@@ -5,9 +5,12 @@ import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.VentaDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Venta;
 import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
@@ -40,13 +43,14 @@ public class ConsultaController {
 	 * Tiene un fitro para poder buscar las ventas por el DNI del cliente o la Matricula del vehiculo
 	 */
 	@FXML
-	private void consultaMarca() {
+	private void consultaMarca() throws IOException {
 		try {
 			List<Venta> consulta = (List<Venta>) vd.getAllForMarca(cons.getText());
 			this.ConfiguraTable();
 			tab.setItems(FXCollections.observableArrayList(consulta));
 			Loggers.LogsInfo("Consulta realizada con exito");
 		} catch (Exception e) {
+			AlertErrorConsulta();
 			Loggers.LogsSevere("La consulta no se ha podido realizar");
 		}
 		
@@ -99,6 +103,21 @@ public class ConsultaController {
 			return ssp;
 		});
 	}
+	
+	/**
+     * Alerta que se muestra si la consulta no se ha podido realizar
+     * @throws IOException
+     */
+    private void AlertErrorConsulta() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL CONSULTAR LOS DATOS");
+        alert.setContentText("No se ha podido consultar los datos que solicita");
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+        alert.showAndWait();
+        alert.close();
+    }
 	
 	/**
 	 * Metodo para cambiar a la pantalla del inicio

@@ -108,8 +108,7 @@ public class Cliente implements IClient{
 
 	@Override
 	public String toString() {
-		return "Cliente ->" + "DNI =" + dni + ", " + nombre + " " + apellidos + ", Correo="
-				+ correo + ", Telefono=" + telefono + ", Direccion=" + direccion + ", Codigo Postal=" + codigo_postal;
+		return "Cliente -> " + dni + ", " + nombre + " " + apellidos;
 	}
 
 	@Override

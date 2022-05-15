@@ -147,6 +147,16 @@ public class VentasController {
 	}
 	
 	/**
+	 * Metodo para cerrar el panel de dialogo cuando le des al boton de modificar venta
+	 * @throws IOException
+	 */
+	@FXML
+	private void closeModPanel() throws IOException {
+		mod.setVisible(false);
+		bot2.setVisible(true);
+	}
+	
+	/**
 	 * Metodo para mostrar un panel de dialogo cuando le das a añadir ventas para la busqueda de cliente y vehiculo
 	 * Se ejecuta cuando le damos SI
 	 * Muestra otro panel para la busqueda de cliente y vehiculo y setear esos datos a los choicebox
@@ -187,11 +197,17 @@ public class VentasController {
 				bot.setVisible(true);
 				cliente.setDisable(true);
 				coche.setDisable(true);
+				modifica.clear();
 				Loggers.LogsInfo("Modificando venta");
+			} else {
+				AlertErrorModFE();
+				modifica.clear();
+				Loggers.LogsSevere("Formato de la Matricula incorrecto al modificar la venta");
 			}
 		} catch (Exception e) {
 			AlertErrorMod();
-			Loggers.LogsSevere("Venta no encontrada o Matricula incorrecta");
+			modifica.clear();
+			Loggers.LogsSevere("Venta no encontrada o no existe");
 		}
 	}
 	
@@ -304,7 +320,21 @@ public class VentasController {
     	Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText("ERROR AL MODIFICAR LA VENTA");
-        alert.setContentText("Los datos introducidos de la venta no son correctos o no existe");
+        alert.setContentText("La Matricula no existe");
+        alert.show();
+        Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
+        s.toFront();
+    }
+    
+    /**
+     * Alerta que se muestra si no encuentra el DNI del cliente o no cumple el formato
+     * @throws IOException
+     */
+    private void AlertErrorModFE() throws IOException {
+    	Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("ERROR");
+        alert.setHeaderText("ERROR AL MODIFICAR LA VENTA");
+        alert.setContentText("Error en el formato de la Matricula");
         alert.show();
         Stage s = (Stage)alert.getDialogPane().getScene().getWindow();
         s.toFront();
