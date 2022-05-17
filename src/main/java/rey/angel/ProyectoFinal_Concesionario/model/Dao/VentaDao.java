@@ -83,7 +83,7 @@ public class VentaDao implements IVentaDAO<Venta, Coche>{
 	public Collection<Venta> getAllForMarca(String m) {
 		Collection<Venta> result = new ArrayList<Venta>();
 		String consulta="SELECT v1.Fecha_Compra,c.DNI,c.Nombre,c.Apellidos,v.Matricula,v.Marca,v.Modelo FROM cliente c join venta v1 on"
-				+ "(c.DNI = v1.DNI) join coche v on (v1.Matricula = v.Matricula) WHERE v.Marca=? group by c.Nombre, c.Apellidos";
+				+ "(c.DNI = v1.DNI) join coche v on (v1.Matricula = v.Matricula) WHERE v.Marca=?";
 		try {
 			PreparedStatement sentencia = miConexion.prepareStatement(consulta);
 			sentencia.setString(1, m);
