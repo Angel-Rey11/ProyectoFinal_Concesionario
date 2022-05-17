@@ -3,6 +3,7 @@ package rey.angel.ProyectoFinal_Concesionario;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 /**
  * Controlador del Menu Principal del programa, es lo primero que se muestra al ejecutarlo
@@ -17,6 +18,11 @@ public class MenuPrincipalController {
 	 */
 	@FXML
     private void switchToInicio() throws IOException {
-        App.setRoot("Inicio");
+		try {
+			App.setRoot("Inicio");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
     }
 }

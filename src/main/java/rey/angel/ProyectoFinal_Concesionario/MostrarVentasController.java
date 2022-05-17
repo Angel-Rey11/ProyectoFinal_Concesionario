@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import rey.angel.ProyectoFinal_Concesionario.model.Dao.VentaDao;
 import rey.angel.ProyectoFinal_Concesionario.model.DataObject.Venta;
+import rey.angel.ProyectoFinal_Concesionario.utils.Loggers;
 
 public class MostrarVentasController {
 	
@@ -126,7 +127,12 @@ public class MostrarVentasController {
 	 */
 	@FXML
 	private void switchToInicio() throws IOException {
-		App.setRoot("Inicio");
+		try {
+			App.setRoot("Inicio");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
 	}
 	
 	/**
@@ -135,7 +141,12 @@ public class MostrarVentasController {
 	 */
 	@FXML
 	private void switchToCoche() throws IOException {
-		App.setRoot("Coches");
+		try {
+			App.setRoot("Coches");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
 	}
 	
 	/**
@@ -144,7 +155,12 @@ public class MostrarVentasController {
 	 */
 	@FXML
 	private void switchToVentas() throws IOException {
-		App.setRoot("Ventas");
+		try {
+			App.setRoot("Ventas");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
 	}
 	
 	/**
@@ -153,7 +169,12 @@ public class MostrarVentasController {
 	 */
 	@FXML
 	private void switchToMenuPrincipal() throws IOException {
-		App.setRoot("MenuPrincipal");
+		try {
+			App.setRoot("MenuPrincipal");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
 	}
 	
 	

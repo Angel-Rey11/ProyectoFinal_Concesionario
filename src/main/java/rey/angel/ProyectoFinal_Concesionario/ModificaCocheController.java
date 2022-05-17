@@ -99,7 +99,12 @@ public class ModificaCocheController {
 	 */
 	@FXML
     private void switchToCoches() throws IOException {
-        App.setRoot("Coches");
+		try {
+			App.setRoot("Coches");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
     }
 	
 	/**
@@ -108,7 +113,12 @@ public class ModificaCocheController {
 	 */
 	@FXML
     private void switchToInicio() throws IOException {
-        App.setRoot("Inicio");
+		try {
+			App.setRoot("Inicio");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
     }
 	
 	/**
@@ -117,7 +127,12 @@ public class ModificaCocheController {
 	 */
 	@FXML
     private void switchToVentas() throws IOException {
-        App.setRoot("Ventas");
+		try {
+			App.setRoot("Ventas");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
     }
 	
 	/**

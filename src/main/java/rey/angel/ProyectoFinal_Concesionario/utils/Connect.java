@@ -53,7 +53,7 @@ public class Connect {
 		try {
 			contexto = JAXBContext.newInstance(DatosConexion.class);
 			Unmarshaller um = contexto.createUnmarshaller();
-			DatosConexion newR = (DatosConexion) um.unmarshal(new File(file));
+			DatosConexion newR = (DatosConexion) um.unmarshal(Connect.class.getResourceAsStream("/rey/angel/Conexion/conexion.xml"));
 			con = newR;
 			
 		} catch (Exception e) {

@@ -96,6 +96,10 @@ public class VentasController {
 		}
 	}
 	
+	/**
+	 * Metodo para cerrar el panel de dialogo cuando no quieras realizar la busqueda
+	 * @throws IOException
+	 */
 	@FXML
 	private void ClosePanel() throws IOException {
 		searchD.setVisible(false);
@@ -245,7 +249,12 @@ public class VentasController {
 	 */
 	@FXML
 	private void switchToInicio() throws IOException {
-		App.setRoot("Inicio");
+		try {
+			App.setRoot("Inicio");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
 	}
 	
 	/**
@@ -254,7 +263,12 @@ public class VentasController {
 	 */
 	@FXML
 	private void switchToCoches() throws IOException {
-		App.setRoot("Coches");
+		try {
+			App.setRoot("Coches");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
 	}
 	
 	/**
@@ -263,7 +277,12 @@ public class VentasController {
 	 */
 	@FXML
 	private void switchToMenu() throws IOException {
-		App.setRoot("MenuPrincipal");
+		try {
+			App.setRoot("MenuPrincipal");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
 	}
 	
 	/**
@@ -272,7 +291,12 @@ public class VentasController {
 	 */
 	@FXML
 	private void switchToShowSells() throws IOException {
-		App.setRoot("MostrarVentas");
+		try {
+			App.setRoot("MostrarVentas");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
 	}
 	
 	/**
@@ -281,7 +305,12 @@ public class VentasController {
 	 */
 	@FXML
 	private void switchToConsulta() throws IOException {
-		App.setRoot("Consulta");
+		try {
+			App.setRoot("Consulta");
+			Loggers.LogsInfo("Cambio de FXML correcto");
+		} catch (Exception e) {
+			Loggers.LogsSevere("No se ha podido cambiar de FXML");
+		}
 	}
 	
 	/**
